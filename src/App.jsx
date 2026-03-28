@@ -9,7 +9,6 @@ import AdminLoginPage from './pages/AdminLoginPage'
 import AdminDashboard from './pages/AdminDashboard'
 import UserLoginPage from './pages/UserLoginPage'
 import UserDashboard from './pages/UserDashboard'
-import PersonalityAssessmentPage from './pages/PersonalityAssessmentPage'
 import FloatingChatbot from './components/FloatingChatbot'
 
 function ThemeToggle({ theme, setTheme }) {
@@ -174,30 +173,8 @@ function MobileMenu({ isOpen, onClose }) {
                   transition: 'all 0.3s'
                 }}
               >
-                <span className="material-symbols-outlined">edit_note</span>
-                Check In
-              </NavLink>
-              
-              <NavLink
-                to="/personality"
-                onClick={onClose}
-                className={({ isActive }) => isActive ? 'mobile-nav-link active' : 'mobile-nav-link'}
-                style={{
-                  padding: 'var(--space-md)',
-                  borderRadius: 'var(--radius-md)',
-                  textDecoration: 'none',
-                  fontFamily: 'var(--font-headline)',
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                  color: 'var(--on-surface)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                  transition: 'all 0.3s'
-                }}
-              >
                 <span className="material-symbols-outlined">psychology</span>
-                Personality
+                Personality Test
               </NavLink>
               
               <NavLink
@@ -263,7 +240,7 @@ function MobileMenu({ isOpen, onClose }) {
                 style={{ width: '100%' }}
               >
                 <span className="material-symbols-outlined">admin_panel_settings</span>
-                Admin Portal
+                Organization Admin
               </NavLink>
             </nav>
           </motion.div>
@@ -291,8 +268,7 @@ function AppContent() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
           <NavLink to="/" className="navbar-brand">MindScape</NavLink>
           <ul className="navbar-links">
-            <li><NavLink to="/checkin" className={({isActive}) => isActive ? 'active' : ''}>Check In</NavLink></li>
-            <li><NavLink to="/personality" className={({isActive}) => isActive ? 'active' : ''}>Personality</NavLink></li>
+            <li><NavLink to="/checkin" className={({isActive}) => isActive ? 'active' : ''}>Personality Test</NavLink></li>
             <li><NavLink to="/trends" className={({isActive}) => isActive ? 'active' : ''}>My Trends</NavLink></li>
             <li><NavLink to="/resources" className={({isActive}) => isActive ? 'active' : ''}>Resources</NavLink></li>
           </ul>
@@ -303,7 +279,10 @@ function AppContent() {
             <span className="material-symbols-outlined">person</span>
             Login
           </NavLink>
-          <NavLink to="/admin" className="btn btn-primary btn-sm hide-mobile">Admin</NavLink>
+          <NavLink to="/admin" className="btn btn-primary btn-sm hide-mobile">
+            <span className="material-symbols-outlined">admin_panel_settings</span>
+            Organization
+          </NavLink>
           <button
             className="navbar-mobile-menu"
             onClick={() => setMobileMenuOpen(true)}
@@ -327,7 +306,6 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/checkin" element={<CheckInPage />} />
-        <Route path="/personality" element={<PersonalityAssessmentPage />} />
         <Route path="/trends" element={<PersonalTrendsPage />} />
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/login" element={<UserLoginPage />} />

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-export default function AdminLoginPage() {
+export default function OrganizationLoginPage() {
   const [isLogin, setIsLogin] = useState(true)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -32,12 +32,12 @@ export default function AdminLoginPage() {
       const data = await res.json()
 
       if (res.ok && data.success) {
-        // Store organization credentials as admin
-        sessionStorage.setItem('mindscape_admin_token', data.token)
-        sessionStorage.setItem('mindscape_admin_name', data.name)
-        sessionStorage.setItem('mindscape_admin_email', data.email)
-        sessionStorage.setItem('mindscape_org_id', data.organizationId)
-        navigate('/admin/dashboard')
+        localStorage.setItem('mindscape_org_token', data.token)
+        localStorage.setItem('mindscape_org_name', data.name)
+        localStorage.setItem('mindscape_org_email', data.email)
+        localStorage.setItem('mindscape_org_id', data.organizationId)
+        // Redirect to organization dashboard (you can create this later)
+        navigate('/admin/dashboard') // Using admin dashboard for now
       } else {
         setError(data.error || 'Authentication failed')
       }
@@ -58,10 +58,10 @@ export default function AdminLoginPage() {
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-2xl)' }}>
-          <div className="icon-bubble icon-bubble-primary" style={{ margin: '0 auto 1.5rem' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '1.75rem' }}>admin_panel_settings</span>
+          <div className="icon-bubble icon-bubble-secondary" style={{ margin: '0 auto 1.5rem' }}>
+            <span className="material-symbols-outlined" style={{ fontSize: '1.75rem' }}>business</span>
           </div>
-          <h2>{isLogin ? 'Organization Admin Login' : 'Register Organization'}</h2>
+          <h2>{isLogin ? 'Organization Login' : 'Register Organization'}</h2>
           <p style={{ fontSize: '0.95rem' }}>
             {isLogin ? 'Access your organization dashboard' : 'Create an organization account'}
           </p>
@@ -70,37 +70,23 @@ export default function AdminLoginPage() {
         <div className="card border-glow shimmer" style={{ padding: 'var(--space-2xl)' }}>
           <form onSubmit={handleSubmit}>
             {!isLogin && (
-              <>
-                <div style={{ marginBottom: 'var(--space-lg)' }}>
-                  <label style={{ fontFamily: 'var(--font-headline)', fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>
-                    Organization Name
-                  </label>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={e => { setName(e.target.value); setError('') }}
-                    placeholder="Enter organization name"
-                    required={!isLogin}
-                  />
-                </div>
-
-                <div style={{ marginBottom: 'var(--space-lg)' }}>
-                  <label style={{ fontFamily: 'var(--font-headline)', fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>
-                    Description (Optional)
-                  </label>
-                  <textarea
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                    placeholder="Brief description of your organization"
-                    rows={3}
-                  />
-                </div>
-              </>
+              <div style={{ marginBottom: 'var(--space-lg)' }}>
+                <label style={{ fontFamily: 'var(--font-headline)', fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>
+                  Organization Name
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={e => { setName(e.target.value); setError('') }}
+                  placeholder="Enter organization name"
+                  required={!isLogin}
+                />
+              </div>
             )}
 
             <div style={{ marginBottom: 'var(--space-lg)' }}>
               <label style={{ fontFamily: 'var(--font-headline)', fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>
-                Organization Email
+                Email
               </label>
               <input
                 type="email"
@@ -126,6 +112,20 @@ export default function AdminLoginPage() {
               />
             </div>
 
+            {!isLogin && (
+              <div style={{ marginBottom: 'var(--space-lg)' }}>
+                <label style={{ fontFamily: 'var(--font-headline)', fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>
+                  Description (Optional)
+                </label>
+                <textarea
+                  value={description}
+                  onChange={e => setDescription(e.target.value)}
+                  placeholder="Brief description of your organization"
+                  rows={3}
+                />
+              </div>
+            )}
+
             {error && (
               <p style={{ color: 'var(--error)', fontSize: '0.85rem', textAlign: 'center', marginBottom: '1rem' }}>
                 <span className="material-symbols-outlined" style={{ fontSize: '1rem', verticalAlign: 'middle', marginRight: '0.25rem' }}>error</span>
@@ -139,7 +139,7 @@ export default function AdminLoginPage() {
               style={{ width: '100%', padding: '0.85rem', opacity: loading ? 0.7 : 1 }}
               disabled={loading}
             >
-              {loading ? (isLogin ? 'Signing in...' : 'Creating account...') : (isLogin ? 'Sign In as Admin' : 'Create Organization')}
+              {loading ? (isLogin ? 'Signing in...' : 'Creating account...') : (isLogin ? 'Sign In' : 'Create Organization')}
               <span className="material-symbols-outlined">{loading ? 'hourglass_top' : 'arrow_forward'}</span>
             </button>
           </form>
@@ -157,19 +157,19 @@ export default function AdminLoginPage() {
                 textDecoration: 'underline'
               }}
             >
-              {isLogin ? "Don't have an account? Register organization" : 'Already registered? Sign in'}
+              {isLogin ? "Don't have an account? Register" : 'Already registered? Sign in'}
             </button>
           </div>
 
           <div className="card-tonal" style={{ marginTop: 'var(--space-lg)', padding: '1rem', textAlign: 'center' }}>
-            <p style={{ fontSize: '0.8rem', margin: 0, lineHeight: 1.6 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '0.9rem', verticalAlign: 'middle', marginRight: '0.25rem', color: 'var(--primary)' }}>info</span>
-              Organizations can manage members, view aggregated wellness data, and access the admin dashboard
+            <p style={{ fontSize: '0.8rem', margin: 0 }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '0.9rem', verticalAlign: 'middle', marginRight: '0.25rem', color: 'var(--secondary)' }}>info</span>
+              Organizations can manage their members and access aggregated wellness data
             </p>
           </div>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 'var(--space-lg)', display: 'flex', gap: 'var(--space-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div style={{ textAlign: 'center', marginTop: 'var(--space-lg)', display: 'flex', gap: 'var(--space-md)', justifyContent: 'center' }}>
           <Link to="/login" style={{ color: 'var(--on-surface-variant)', fontSize: '0.9rem', textDecoration: 'none' }}>
             <span className="material-symbols-outlined" style={{ fontSize: '1rem', verticalAlign: 'middle', marginRight: '0.25rem' }}>person</span>
             User Login

@@ -55,6 +55,18 @@ export function initDB() {
       email TEXT UNIQUE NOT NULL,
       password_hash TEXT NOT NULL,
       name TEXT NOT NULL,
+      organization_id INTEGER,
+      created_at TEXT NOT NULL,
+      last_login TEXT,
+      FOREIGN KEY (organization_id) REFERENCES organizations(id)
+    );
+
+    CREATE TABLE IF NOT EXISTS organizations (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT UNIQUE NOT NULL,
+      email TEXT UNIQUE NOT NULL,
+      password_hash TEXT NOT NULL,
+      description TEXT,
       created_at TEXT NOT NULL,
       last_login TEXT
     );
@@ -65,6 +77,8 @@ export function initDB() {
     CREATE INDEX IF NOT EXISTS idx_mood_department ON mood_entries(department);
     CREATE INDEX IF NOT EXISTS idx_alerts_resolved ON alerts(resolved);
     CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+    CREATE INDEX IF NOT EXISTS idx_users_organization ON users(organization_id);
+    CREATE INDEX IF NOT EXISTS idx_organizations_email ON organizations(email);
   `)
 
   // Seed resources if empty (these are static content, not user data)

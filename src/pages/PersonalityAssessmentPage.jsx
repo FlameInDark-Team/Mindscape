@@ -3,97 +3,295 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
 const personalityQuestions = [
+  // Energy & Social Interaction (E/I)
   {
     id: 1,
     category: 'Social Energy',
     question: 'When you feel stressed, do you prefer to:',
     options: [
-      { text: 'Spend time alone to recharge', value: 'I', trait: 'Introversion' },
+      { text: 'Spend time alone to recharge and reflect', value: 'I', trait: 'Introversion' },
       { text: 'Be around friends and talk it out', value: 'E', trait: 'Extraversion' }
     ]
   },
   {
     id: 2,
-    category: 'Coping Style',
-    question: 'When facing a problem, you tend to:',
-    options: [
-      { text: 'Focus on practical, concrete solutions', value: 'S', trait: 'Sensing' },
-      { text: 'Explore possibilities and big-picture thinking', value: 'N', trait: 'Intuition' }
-    ]
-  },
-  {
-    id: 3,
-    category: 'Decision Making',
-    question: 'When making important decisions, you rely more on:',
-    options: [
-      { text: 'Logic and objective analysis', value: 'T', trait: 'Thinking' },
-      { text: 'Personal values and how it affects others', value: 'F', trait: 'Feeling' }
-    ]
-  },
-  {
-    id: 4,
-    category: 'Lifestyle Preference',
-    question: 'You feel more comfortable when your day is:',
-    options: [
-      { text: 'Planned and organized', value: 'J', trait: 'Judging' },
-      { text: 'Flexible and spontaneous', value: 'P', trait: 'Perceiving' }
-    ]
-  },
-  {
-    id: 5,
-    category: 'Stress Response',
-    question: 'Under pressure, you are more likely to:',
-    options: [
-      { text: 'Stay calm and think things through', value: 'T', trait: 'Thinking' },
-      { text: 'Feel emotions strongly and seek support', value: 'F', trait: 'Feeling' }
-    ]
-  },
-  {
-    id: 6,
     category: 'Social Interaction',
     question: 'In social situations, you:',
     options: [
-      { text: 'Prefer deep conversations with a few people', value: 'I', trait: 'Introversion' },
+      { text: 'Prefer deep conversations with a few close people', value: 'I', trait: 'Introversion' },
       { text: 'Enjoy meeting new people and group activities', value: 'E', trait: 'Extraversion' }
     ]
   },
   {
-    id: 7,
-    category: 'Information Processing',
-    question: 'You learn best by:',
+    id: 3,
+    category: 'Energy Source',
+    question: 'After a long day, you feel most recharged by:',
     options: [
-      { text: 'Following step-by-step instructions', value: 'S', trait: 'Sensing' },
-      { text: 'Understanding concepts and theories', value: 'N', trait: 'Intuition' }
+      { text: 'Having quiet time alone with your thoughts', value: 'I', trait: 'Introversion' },
+      { text: 'Going out and socializing with others', value: 'E', trait: 'Extraversion' }
+    ]
+  },
+  
+  // Information Processing (S/N)
+  {
+    id: 4,
+    category: 'Coping Style',
+    question: 'When facing a problem, you tend to:',
+    options: [
+      { text: 'Focus on practical, concrete solutions that work now', value: 'S', trait: 'Sensing' },
+      { text: 'Explore possibilities and think about future implications', value: 'N', trait: 'Intuition' }
     ]
   },
   {
+    id: 5,
+    category: 'Information Processing',
+    question: 'You learn best by:',
+    options: [
+      { text: 'Following step-by-step instructions and examples', value: 'S', trait: 'Sensing' },
+      { text: 'Understanding concepts, theories, and the big picture', value: 'N', trait: 'Intuition' }
+    ]
+  },
+  {
+    id: 6,
+    category: 'Focus Style',
+    question: 'When reading or learning, you pay more attention to:',
+    options: [
+      { text: 'Facts, details, and what is actually said', value: 'S', trait: 'Sensing' },
+      { text: 'Meanings, patterns, and what could be implied', value: 'N', trait: 'Intuition' }
+    ]
+  },
+  {
+    id: 7,
+    category: 'Problem Solving',
+    question: 'You trust more in:',
+    options: [
+      { text: 'Experience and proven methods', value: 'S', trait: 'Sensing' },
+      { text: 'Intuition and innovative approaches', value: 'N', trait: 'Intuition' }
+    ]
+  },
+  
+  // Decision Making (T/F)
+  {
     id: 8,
+    category: 'Decision Making',
+    question: 'When making important decisions, you rely more on:',
+    options: [
+      { text: 'Logic, objective analysis, and what makes sense', value: 'T', trait: 'Thinking' },
+      { text: 'Personal values and how it affects people', value: 'F', trait: 'Feeling' }
+    ]
+  },
+  {
+    id: 9,
+    category: 'Stress Response',
+    question: 'Under pressure, you are more likely to:',
+    options: [
+      { text: 'Stay calm, detached, and think things through logically', value: 'T', trait: 'Thinking' },
+      { text: 'Feel emotions strongly and seek emotional support', value: 'F', trait: 'Feeling' }
+    ]
+  },
+  {
+    id: 10,
+    category: 'Conflict Resolution',
+    question: 'In disagreements, you prioritize:',
+    options: [
+      { text: 'Being right and finding the truth', value: 'T', trait: 'Thinking' },
+      { text: 'Maintaining harmony and understanding feelings', value: 'F', trait: 'Feeling' }
+    ]
+  },
+  
+  // Lifestyle & Organization (J/P)
+  {
+    id: 11,
+    category: 'Lifestyle Preference',
+    question: 'You feel more comfortable when your day is:',
+    options: [
+      { text: 'Planned, organized, and structured', value: 'J', trait: 'Judging' },
+      { text: 'Flexible, spontaneous, and open to change', value: 'P', trait: 'Perceiving' }
+    ]
+  },
+  {
+    id: 12,
     category: 'Work Style',
     question: 'You prefer to:',
     options: [
-      { text: 'Complete tasks ahead of deadlines', value: 'J', trait: 'Judging' },
-      { text: 'Work best under time pressure', value: 'P', trait: 'Perceiving' }
+      { text: 'Complete tasks well ahead of deadlines', value: 'J', trait: 'Judging' },
+      { text: 'Work best under time pressure and last-minute', value: 'P', trait: 'Perceiving' }
+    ]
+  },
+  {
+    id: 13,
+    category: 'Organization',
+    question: 'Your living/work space is usually:',
+    options: [
+      { text: 'Neat, organized, and everything has its place', value: 'J', trait: 'Judging' },
+      { text: 'Flexible, with organized chaos that works for you', value: 'P', trait: 'Perceiving' }
+    ]
+  },
+  {
+    id: 14,
+    category: 'Planning',
+    question: 'When going on a trip, you:',
+    options: [
+      { text: 'Plan everything in advance with a detailed itinerary', value: 'J', trait: 'Judging' },
+      { text: 'Prefer to be spontaneous and see where the day takes you', value: 'P', trait: 'Perceiving' }
+    ]
+  },
+  {
+    id: 15,
+    category: 'Completion',
+    question: 'You feel most satisfied when:',
+    options: [
+      { text: 'Tasks are completed and checked off your list', value: 'J', trait: 'Judging' },
+      { text: 'You have multiple options and possibilities open', value: 'P', trait: 'Perceiving' }
     ]
   }
 ]
 
 const personalityTypes = {
-  'ISTJ': { name: 'The Inspector', description: 'Practical, fact-minded, and reliable. You value order and tradition.' },
-  'ISFJ': { name: 'The Protector', description: 'Warm, responsible, and caring. You are dedicated to helping others.' },
-  'INFJ': { name: 'The Counselor', description: 'Insightful, idealistic, and principled. You seek meaning and connection.' },
-  'INTJ': { name: 'The Mastermind', description: 'Strategic, independent, and analytical. You value competence and knowledge.' },
-  'ISTP': { name: 'The Craftsman', description: 'Practical, observant, and adaptable. You excel at hands-on problem-solving.' },
-  'ISFP': { name: 'The Composer', description: 'Gentle, caring, and artistic. You live in the present moment.' },
-  'INFP': { name: 'The Healer', description: 'Idealistic, loyal, and empathetic. You seek authenticity and meaning.' },
-  'INTP': { name: 'The Architect', description: 'Logical, innovative, and curious. You love exploring ideas and theories.' },
-  'ESTP': { name: 'The Dynamo', description: 'Energetic, pragmatic, and spontaneous. You thrive on action and excitement.' },
-  'ESFP': { name: 'The Performer', description: 'Outgoing, friendly, and fun-loving. You bring joy to others.' },
-  'ENFP': { name: 'The Champion', description: 'Enthusiastic, creative, and sociable. You inspire and motivate others.' },
-  'ENTP': { name: 'The Visionary', description: 'Innovative, clever, and curious. You love debating ideas.' },
-  'ESTJ': { name: 'The Supervisor', description: 'Organized, practical, and decisive. You value efficiency and order.' },
-  'ESFJ': { name: 'The Provider', description: 'Caring, social, and popular. You create harmony and help others.' },
-  'ENFJ': { name: 'The Teacher', description: 'Charismatic, inspiring, and empathetic. You lead with compassion.' },
-  'ENTJ': { name: 'The Commander', description: 'Bold, strategic, and confident. You are a natural leader.' }
+  'ISTJ': { 
+    name: 'The Inspector', 
+    description: 'Practical, fact-minded, and reliable. You value order, tradition, and responsibility.',
+    strengths: ['Organized', 'Responsible', 'Practical', 'Detail-oriented', 'Loyal'],
+    weaknesses: ['Inflexible', 'Judgmental', 'Insensitive', 'Resistant to change'],
+    careers: ['Accountant', 'Administrator', 'Engineer', 'Military Officer', 'Auditor'],
+    relationships: 'Values stability and commitment. Prefers clear expectations and traditional roles.',
+    stressManagement: 'Create structured routines, use checklists, maintain order in your environment'
+  },
+  'ISFJ': { 
+    name: 'The Protector', 
+    description: 'Warm, responsible, and caring. You are dedicated to helping and protecting others.',
+    strengths: ['Supportive', 'Reliable', 'Patient', 'Practical', 'Observant'],
+    weaknesses: ['Overly humble', 'Takes things personally', 'Reluctant to change', 'Overloaded'],
+    careers: ['Nurse', 'Teacher', 'Social Worker', 'Counselor', 'Administrator'],
+    relationships: 'Deeply caring and committed. Shows love through actions and service.',
+    stressManagement: 'Set boundaries, practice self-care, allow time for personal needs'
+  },
+  'INFJ': { 
+    name: 'The Counselor', 
+    description: 'Insightful, idealistic, and principled. You seek meaning, connection, and purpose.',
+    strengths: ['Insightful', 'Principled', 'Passionate', 'Creative', 'Inspiring'],
+    weaknesses: ['Sensitive', 'Perfectionistic', 'Private', 'Burnout-prone'],
+    careers: ['Counselor', 'Psychologist', 'Writer', 'Teacher', 'Social Worker'],
+    relationships: 'Seeks deep, meaningful connections. Values authenticity and emotional intimacy.',
+    stressManagement: 'Journal your thoughts, engage in creative activities, protect your alone time'
+  },
+  'INTJ': { 
+    name: 'The Mastermind', 
+    description: 'Strategic, independent, and analytical. You value competence, knowledge, and efficiency.',
+    strengths: ['Strategic', 'Independent', 'Determined', 'Innovative', 'Confident'],
+    weaknesses: ['Arrogant', 'Dismissive', 'Overly critical', 'Combative'],
+    careers: ['Scientist', 'Engineer', 'Programmer', 'Analyst', 'Strategist'],
+    relationships: 'Values intellectual connection. Prefers depth over breadth in relationships.',
+    stressManagement: 'Break problems into logical steps, engage in strategic planning, pursue knowledge'
+  },
+  'ISTP': { 
+    name: 'The Craftsman', 
+    description: 'Practical, observant, and adaptable. You excel at hands-on problem-solving.',
+    strengths: ['Practical', 'Flexible', 'Logical', 'Spontaneous', 'Resourceful'],
+    weaknesses: ['Insensitive', 'Private', 'Stubborn', 'Risk-prone'],
+    careers: ['Mechanic', 'Engineer', 'Pilot', 'Forensic Scientist', 'Athlete'],
+    relationships: 'Values independence and action. Shows care through practical help.',
+    stressManagement: 'Engage in physical activities, work with your hands, solve practical problems'
+  },
+  'ISFP': { 
+    name: 'The Composer', 
+    description: 'Gentle, caring, and artistic. You live in the present moment and value harmony.',
+    strengths: ['Charming', 'Sensitive', 'Imaginative', 'Passionate', 'Curious'],
+    weaknesses: ['Fiercely independent', 'Unpredictable', 'Easily stressed', 'Overly competitive'],
+    careers: ['Artist', 'Designer', 'Musician', 'Chef', 'Veterinarian'],
+    relationships: 'Warm and supportive. Expresses love through actions and creative gestures.',
+    stressManagement: 'Express yourself creatively, spend time in nature, practice mindfulness'
+  },
+  'INFP': { 
+    name: 'The Healer', 
+    description: 'Idealistic, loyal, and empathetic. You seek authenticity, meaning, and personal growth.',
+    strengths: ['Empathetic', 'Idealistic', 'Creative', 'Open-minded', 'Passionate'],
+    weaknesses: ['Unrealistic', 'Self-isolating', 'Unfocused', 'Emotionally vulnerable'],
+    careers: ['Writer', 'Counselor', 'Psychologist', 'Artist', 'Teacher'],
+    relationships: 'Deeply romantic and loyal. Seeks authentic emotional connection.',
+    stressManagement: 'Write or journal, engage in creative pursuits, connect with your values'
+  },
+  'INTP': { 
+    name: 'The Architect', 
+    description: 'Logical, innovative, and curious. You love exploring ideas, theories, and systems.',
+    strengths: ['Analytical', 'Original', 'Open-minded', 'Curious', 'Objective'],
+    weaknesses: ['Disconnected', 'Insensitive', 'Dissatisfied', 'Condescending'],
+    careers: ['Scientist', 'Programmer', 'Mathematician', 'Philosopher', 'Analyst'],
+    relationships: 'Values intellectual stimulation. May struggle with emotional expression.',
+    stressManagement: 'Analyze problems logically, learn new concepts, engage in intellectual debates'
+  },
+  'ESTP': { 
+    name: 'The Dynamo', 
+    description: 'Energetic, pragmatic, and spontaneous. You thrive on action, excitement, and results.',
+    strengths: ['Bold', 'Rational', 'Practical', 'Original', 'Perceptive'],
+    weaknesses: ['Insensitive', 'Impatient', 'Risk-prone', 'Unstructured'],
+    careers: ['Entrepreneur', 'Sales', 'Paramedic', 'Detective', 'Athlete'],
+    relationships: 'Fun-loving and spontaneous. Prefers action over deep emotional talks.',
+    stressManagement: 'Stay active, take on challenges, engage in competitive activities'
+  },
+  'ESFP': { 
+    name: 'The Performer', 
+    description: 'Outgoing, friendly, and fun-loving. You bring joy, energy, and enthusiasm to others.',
+    strengths: ['Bold', 'Original', 'Practical', 'Observant', 'Excellent people skills'],
+    weaknesses: ['Sensitive', 'Conflict-averse', 'Easily bored', 'Poor long-term focus'],
+    careers: ['Entertainer', 'Event Planner', 'Sales', 'Teacher', 'Social Worker'],
+    relationships: 'Warm and generous. Loves making others happy and creating fun experiences.',
+    stressManagement: 'Socialize with friends, engage in fun activities, stay in the present moment'
+  },
+  'ENFP': { 
+    name: 'The Champion', 
+    description: 'Enthusiastic, creative, and sociable. You inspire and motivate others with your passion.',
+    strengths: ['Curious', 'Observant', 'Energetic', 'Enthusiastic', 'Excellent communicator'],
+    weaknesses: ['Unfocused', 'Disorganized', 'Overly accommodating', 'Overly optimistic'],
+    careers: ['Counselor', 'Teacher', 'Writer', 'Entrepreneur', 'Psychologist'],
+    relationships: 'Passionate and supportive. Seeks deep emotional connections and growth.',
+    stressManagement: 'Explore new possibilities, connect with others, pursue creative projects'
+  },
+  'ENTP': { 
+    name: 'The Visionary', 
+    description: 'Innovative, clever, and curious. You love debating ideas and challenging the status quo.',
+    strengths: ['Knowledgeable', 'Quick thinker', 'Original', 'Charismatic', 'Energetic'],
+    weaknesses: ['Argumentative', 'Insensitive', 'Intolerant', 'Difficulty focusing'],
+    careers: ['Entrepreneur', 'Lawyer', 'Scientist', 'Inventor', 'Consultant'],
+    relationships: 'Intellectually stimulating. Enjoys playful debates and mental challenges.',
+    stressManagement: 'Engage in intellectual debates, explore new ideas, challenge yourself'
+  },
+  'ESTJ': { 
+    name: 'The Supervisor', 
+    description: 'Organized, practical, and decisive. You value efficiency, order, and getting things done.',
+    strengths: ['Dedicated', 'Strong-willed', 'Direct', 'Honest', 'Loyal'],
+    weaknesses: ['Inflexible', 'Uncomfortable with unconventional', 'Judgmental', 'Difficult to relax'],
+    careers: ['Manager', 'Administrator', 'Judge', 'Military Officer', 'Business Executive'],
+    relationships: 'Traditional and committed. Values stability and clear expectations.',
+    stressManagement: 'Create action plans, organize your environment, take charge of situations'
+  },
+  'ESFJ': { 
+    name: 'The Provider', 
+    description: 'Caring, social, and popular. You create harmony, help others, and build community.',
+    strengths: ['Strong practical skills', 'Loyal', 'Sensitive', 'Warm', 'Good at connecting'],
+    weaknesses: ['Worried about social status', 'Inflexible', 'Reluctant to innovate', 'Needy'],
+    careers: ['Teacher', 'Nurse', 'Social Worker', 'Event Coordinator', 'Office Manager'],
+    relationships: 'Warm and caring. Shows love through acts of service and attention.',
+    stressManagement: 'Help others, maintain social connections, create harmonious environments'
+  },
+  'ENFJ': { 
+    name: 'The Teacher', 
+    description: 'Charismatic, inspiring, and empathetic. You lead with compassion and bring out the best in others.',
+    strengths: ['Tolerant', 'Reliable', 'Charismatic', 'Altruistic', 'Natural leader'],
+    weaknesses: ['Overly idealistic', 'Too selfless', 'Too sensitive', 'Fluctuating self-esteem'],
+    careers: ['Teacher', 'Counselor', 'Coach', 'HR Manager', 'Politician'],
+    relationships: 'Deeply caring and supportive. Invests heavily in relationships and growth.',
+    stressManagement: 'Help others grow, lead group activities, express your feelings openly'
+  },
+  'ENTJ': { 
+    name: 'The Commander', 
+    description: 'Bold, strategic, and confident. You are a natural leader who excels at organizing and directing.',
+    strengths: ['Efficient', 'Energetic', 'Self-confident', 'Strong-willed', 'Strategic'],
+    weaknesses: ['Stubborn', 'Intolerant', 'Impatient', 'Arrogant', 'Poor handling of emotions'],
+    careers: ['CEO', 'Lawyer', 'Judge', 'Business Consultant', 'Entrepreneur'],
+    relationships: 'Direct and honest. Values growth, competence, and intellectual connection.',
+    stressManagement: 'Set and achieve goals, lead projects, engage in strategic planning'
+  }
 }
 
 export default function PersonalityAssessmentPage() {
@@ -156,17 +354,18 @@ export default function PersonalityAssessmentPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto' }}
+          style={{ position: 'relative', zIndex: 1, maxWidth: '900px', margin: '0 auto' }}
         >
           <div style={{ textAlign: 'center', marginBottom: 'var(--space-2xl)' }}>
             <div className="icon-bubble icon-bubble-primary" style={{ margin: '0 auto 1.5rem' }}>
               <span className="material-symbols-outlined" style={{ fontSize: '2rem' }}>psychology</span>
             </div>
-            <h2>Your Personality Type</h2>
-            <p>Discover insights about your mental wellness style</p>
+            <h2>Your Personality Profile</h2>
+            <p>Comprehensive insights about your mental wellness style</p>
           </div>
 
-          <div className="card border-glow" style={{ padding: 'var(--space-2xl)', textAlign: 'center' }}>
+          {/* Main Type Display */}
+          <div className="card border-glow" style={{ padding: 'var(--space-2xl)', textAlign: 'center', marginBottom: 'var(--space-xl)' }}>
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -183,53 +382,198 @@ export default function PersonalityAssessmentPage() {
                 {personalityType}
               </h1>
               <h3 style={{ margin: '0 0 1rem', color: 'var(--primary)' }}>{typeInfo.name}</h3>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.6, marginBottom: 'var(--space-xl)' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.6, marginBottom: 0 }}>
                 {typeInfo.description}
               </p>
             </motion.div>
+          </div>
 
-            <div className="card-tonal" style={{ padding: 'var(--space-xl)', marginBottom: 'var(--space-xl)', textAlign: 'left' }}>
-              <h4 style={{ marginTop: 0 }}>Your Wellness Strengths:</h4>
-              <ul style={{ lineHeight: 1.8 }}>
-                {personalityType.includes('I') && <li>You recharge through solitude and reflection</li>}
-                {personalityType.includes('E') && <li>You gain energy from social connections</li>}
-                {personalityType.includes('S') && <li>You excel at practical, grounded approaches</li>}
-                {personalityType.includes('N') && <li>You see possibilities and future potential</li>}
-                {personalityType.includes('T') && <li>You make logical, objective decisions</li>}
-                {personalityType.includes('F') && <li>You prioritize empathy and harmony</li>}
-                {personalityType.includes('J') && <li>You thrive with structure and planning</li>}
-                {personalityType.includes('P') && <li>You adapt well to change and spontaneity</li>}
+          {/* Strengths & Weaknesses */}
+          <div className="grid-2" style={{ marginBottom: 'var(--space-xl)' }}>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="card card-glow"
+              style={{ padding: 'var(--space-xl)' }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-md)' }}>
+                <span className="material-symbols-outlined" style={{ color: 'var(--primary)', fontSize: '1.5rem' }}>
+                  star
+                </span>
+                <h4 style={{ margin: 0 }}>Your Strengths</h4>
+              </div>
+              <ul style={{ lineHeight: 1.8, paddingLeft: '1.5rem' }}>
+                {typeInfo.strengths.map((strength, i) => (
+                  <li key={i} style={{ marginBottom: '0.5rem' }}>{strength}</li>
+                ))}
               </ul>
-            </div>
+            </motion.div>
 
-            <div className="card-tonal" style={{ padding: 'var(--space-xl)', marginBottom: 'var(--space-xl)', textAlign: 'left' }}>
-              <h4 style={{ marginTop: 0 }}>Recommended Wellness Strategies:</h4>
-              <ul style={{ lineHeight: 1.8 }}>
-                {personalityType.includes('I') && <li>Schedule regular alone time for self-care</li>}
-                {personalityType.includes('E') && <li>Join group activities and support networks</li>}
-                {personalityType.includes('S') && <li>Use concrete, step-by-step stress management techniques</li>}
-                {personalityType.includes('N') && <li>Explore creative outlets and visualization exercises</li>}
-                {personalityType.includes('T') && <li>Track your progress with data and metrics</li>}
-                {personalityType.includes('F') && <li>Connect with others through shared experiences</li>}
-                {personalityType.includes('J') && <li>Create structured routines and schedules</li>}
-                {personalityType.includes('P') && <li>Stay flexible and try varied wellness approaches</li>}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="card card-glow"
+              style={{ padding: 'var(--space-xl)' }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-md)' }}>
+                <span className="material-symbols-outlined" style={{ color: 'var(--secondary)', fontSize: '1.5rem' }}>
+                  trending_up
+                </span>
+                <h4 style={{ margin: 0 }}>Growth Areas</h4>
+              </div>
+              <ul style={{ lineHeight: 1.8, paddingLeft: '1.5rem' }}>
+                {typeInfo.weaknesses.map((weakness, i) => (
+                  <li key={i} style={{ marginBottom: '0.5rem' }}>{weakness}</li>
+                ))}
               </ul>
-            </div>
+            </motion.div>
+          </div>
 
-            <div style={{ display: 'flex', gap: 'var(--space-md)', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <button onClick={restartTest} className="btn btn-outline">
-                <span className="material-symbols-outlined">refresh</span>
-                Retake Test
-              </button>
-              <button onClick={() => navigate('/trends')} className="btn btn-primary">
-                <span className="material-symbols-outlined">trending_up</span>
-                View My Trends
-              </button>
-              <button onClick={() => navigate('/resources')} className="btn btn-secondary">
-                <span className="material-symbols-outlined">menu_book</span>
-                Explore Resources
-              </button>
+          {/* Career Suggestions */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="card border-glow"
+            style={{ padding: 'var(--space-xl)', marginBottom: 'var(--space-xl)' }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-md)' }}>
+              <span className="material-symbols-outlined" style={{ color: 'var(--tertiary)', fontSize: '1.5rem' }}>
+                work
+              </span>
+              <h4 style={{ margin: 0 }}>Ideal Career Paths</h4>
             </div>
+            <p style={{ marginBottom: 'var(--space-md)', opacity: 0.9 }}>
+              Based on your personality type, you may thrive in these careers:
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)' }}>
+              {typeInfo.careers.map((career, i) => (
+                <span key={i} className="chip" style={{ background: 'var(--tertiary-container)', color: 'var(--on-tertiary-container)' }}>
+                  {career}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Relationships */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="card card-glow"
+            style={{ padding: 'var(--space-xl)', marginBottom: 'var(--space-xl)' }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-md)' }}>
+              <span className="material-symbols-outlined" style={{ color: 'var(--primary)', fontSize: '1.5rem' }}>
+                favorite
+              </span>
+              <h4 style={{ margin: 0 }}>Relationships & Social Style</h4>
+            </div>
+            <p style={{ lineHeight: 1.6, margin: 0 }}>
+              {typeInfo.relationships}
+            </p>
+          </motion.div>
+
+          {/* Stress Management */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="card-tonal"
+            style={{ padding: 'var(--space-xl)', marginBottom: 'var(--space-xl)' }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-md)' }}>
+              <span className="material-symbols-outlined" style={{ color: 'var(--secondary)', fontSize: '1.5rem' }}>
+                self_improvement
+              </span>
+              <h4 style={{ margin: 0 }}>Personalized Stress Management</h4>
+            </div>
+            <p style={{ lineHeight: 1.6, margin: 0 }}>
+              {typeInfo.stressManagement}
+            </p>
+          </motion.div>
+
+          {/* Wellness Recommendations */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="card border-glow"
+            style={{ padding: 'var(--space-xl)', marginBottom: 'var(--space-xl)' }}
+          >
+            <h4 style={{ marginTop: 0 }}>Your Wellness Toolkit</h4>
+            <div className="grid-2" style={{ gap: 'var(--space-md)' }}>
+              <div>
+                <h5 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-sm)' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '1.25rem' }}>battery_charging_full</span>
+                  Energy Management
+                </h5>
+                <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>
+                  {personalityType.includes('I') 
+                    ? 'Schedule regular alone time for self-care and reflection. Recharge in quiet environments.'
+                    : 'Maintain social connections and group activities. Recharge through interaction with others.'}
+                </p>
+              </div>
+              <div>
+                <h5 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-sm)' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '1.25rem' }}>psychology</span>
+                  Mental Approach
+                </h5>
+                <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>
+                  {personalityType.includes('S') 
+                    ? 'Use concrete, step-by-step stress management techniques. Focus on practical solutions.'
+                    : 'Explore creative outlets and visualization exercises. Think about possibilities and meanings.'}
+                </p>
+              </div>
+              <div>
+                <h5 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-sm)' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '1.25rem' }}>favorite</span>
+                  Emotional Processing
+                </h5>
+                <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>
+                  {personalityType.includes('T') 
+                    ? 'Track your progress with data and metrics. Analyze situations logically and objectively.'
+                    : 'Connect with others through shared experiences. Honor your emotions and seek support.'}
+                </p>
+              </div>
+              <div>
+                <h5 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-sm)' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '1.25rem' }}>calendar_month</span>
+                  Organization Style
+                </h5>
+                <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>
+                  {personalityType.includes('J') 
+                    ? 'Create structured routines and schedules. Plan ahead and maintain organization.'
+                    : 'Stay flexible and try varied wellness approaches. Embrace spontaneity and adaptability.'}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Action Buttons */}
+          <div style={{ display: 'flex', gap: 'var(--space-md)', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <button onClick={restartTest} className="btn btn-outline">
+              <span className="material-symbols-outlined">refresh</span>
+              Retake Test
+            </button>
+            <button onClick={() => navigate('/trends')} className="btn btn-primary">
+              <span className="material-symbols-outlined">trending_up</span>
+              View My Trends
+            </button>
+            <button onClick={() => navigate('/resources')} className="btn btn-secondary">
+              <span className="material-symbols-outlined">menu_book</span>
+              Explore Resources
+            </button>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="card-tonal" style={{ marginTop: 'var(--space-xl)', padding: 'var(--space-lg)', textAlign: 'center' }}>
+            <p style={{ margin: 0, fontSize: '0.85rem', opacity: 0.9 }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '1rem', verticalAlign: 'middle', marginRight: '0.25rem' }}>info</span>
+              This assessment is for self-discovery and wellness guidance. It is not a clinical diagnostic tool.
+            </p>
           </div>
         </motion.div>
       </div>

@@ -283,11 +283,104 @@ app.get('/api/personal/stats', (req, res) => {
 })
 
 // ─────────────────────────────────────────────
+// ORGANIZATION REGISTRATION
+// ─────────────────────────────────────────────
+app.post('/api/organization/register', (req, res) => {
+  try {
+    const { name, email, password, description } = req.body
+
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: 'Name, email, and password are required' })
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ error: 'Password must be at least 6 characters' })
+    }
+
+    // Check if organization already exists
+    const existing = db.prepare('SELECT id FROM organizations WHERE email = ?').get(email)
+    if (existing) {
+      return res.status(400).json({ error: 'Organization email already registered' })
+    }
+
+    // Create organization
+    const passwordHash = hashPassword(password)
+    const stmt = db.prepare(`
+      INSERT INTO organizations (name, email, password_hash, description, created_at, last_login)
+      VALUES (?, ?, ?, ?, datetime('now'), datetime('now'))
+    `)
+    const result = stmt.run(name, email, passwordHash, description || '')
+
+    const token = generateToken()
+
+    res.json({
+      success: true,
+      token,
+      organizationId: result.lastInsertRowid,
+      name,
+      email
+    })
+  } catch (err) {
+    console.error('Organization registration error:', err.message)
+    res.status(500).json({ error: 'Registration failed' })
+  }
+})
+
+// ─────────────────────────────────────────────
+// ORGANIZATION LOGIN
+// ─────────────────────────────────────────────
+app.post('/api/organization/login', (req, res) => {
+  try {
+    const { email, password } = req.body
+
+    if (!email || !password) {
+      return res.status(400).json({ error: 'Email and password are required' })
+    }
+
+    const passwordHash = hashPassword(password)
+    const org = db.prepare('SELECT * FROM organizations WHERE email = ? AND password_hash = ?').get(email, passwordHash)
+
+    if (!org) {
+      return res.status(401).json({ error: 'Invalid email or password' })
+    }
+
+    // Update last login
+    db.prepare('UPDATE organizations SET last_login = datetime("now") WHERE id = ?').run(org.id)
+
+    const token = generateToken()
+
+    res.json({
+      success: true,
+      token,
+      organizationId: org.id,
+      name: org.name,
+      email: org.email,
+      description: org.description
+    })
+  } catch (err) {
+    console.error('Organization login error:', err.message)
+    res.status(500).json({ error: 'Login failed' })
+  }
+})
+
+// ─────────────────────────────────────────────
+// GET ALL ORGANIZATIONS (for user selection)
+// ─────────────────────────────────────────────
+app.get('/api/organizations', (req, res) => {
+  try {
+    const organizations = db.prepare('SELECT id, name, description FROM organizations ORDER BY name').all()
+    res.json(organizations)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// ─────────────────────────────────────────────
 // USER REGISTRATION
 // ─────────────────────────────────────────────
 app.post('/api/user/register', (req, res) => {
   try {
-    const { email, password, name } = req.body
+    const { email, password, name, organizationId } = req.body
 
     if (!email || !password || !name) {
       return res.status(400).json({ error: 'All fields are required' })
@@ -306,19 +399,28 @@ app.post('/api/user/register', (req, res) => {
     // Create user
     const passwordHash = hashPassword(password)
     const stmt = db.prepare(`
-      INSERT INTO users (email, password_hash, name, created_at, last_login)
-      VALUES (?, ?, ?, datetime('now'), datetime('now'))
+      INSERT INTO users (email, password_hash, name, organization_id, created_at, last_login)
+      VALUES (?, ?, ?, ?, datetime('now'), datetime('now'))
     `)
-    const result = stmt.run(email, passwordHash, name)
+    const result = stmt.run(email, passwordHash, name, organizationId || null)
 
     const token = generateToken()
+
+    // Get organization name if provided
+    let organizationName = null
+    if (organizationId) {
+      const org = db.prepare('SELECT name FROM organizations WHERE id = ?').get(organizationId)
+      organizationName = org?.name
+    }
 
     res.json({
       success: true,
       token,
       email,
       name,
-      userId: result.lastInsertRowid
+      userId: result.lastInsertRowid,
+      organizationId: organizationId || null,
+      organizationName
     })
   } catch (err) {
     console.error('Registration error:', err.message)

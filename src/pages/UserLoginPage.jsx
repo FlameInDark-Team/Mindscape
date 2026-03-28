@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { GoogleLogin } from '@react-oauth/google'
@@ -9,9 +9,27 @@ export default function UserLoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const [organizations, setOrganizations] = useState([])
+  const [selectedOrganization, setSelectedOrganization] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+
+  // Fetch organizations on component mount
+  useEffect(() => {
+    const fetchOrganizations = async () => {
+      try {
+        const res = await fetch('http://localhost:3001/api/organizations')
+        if (res.ok) {
+          const data = await res.json()
+          setOrganizations(data)
+        }
+      } catch (err) {
+        console.error('Failed to fetch organizations:', err)
+      }
+    }
+    fetchOrganizations()
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -22,7 +40,7 @@ export default function UserLoginPage() {
       const endpoint = isLogin ? '/api/user/login' : '/api/user/register'
       const payload = isLogin 
         ? { email, password }
-        : { email, password, name }
+        : { email, password, name, organizationId: selectedOrganization || null }
 
       const res = await fetch(`http://localhost:3001${endpoint}`, {
         method: 'POST',
@@ -36,6 +54,10 @@ export default function UserLoginPage() {
         localStorage.setItem('mindscape_user_token', data.token)
         localStorage.setItem('mindscape_user_name', data.name)
         localStorage.setItem('mindscape_user_email', data.email)
+        if (data.organizationId) {
+          localStorage.setItem('mindscape_user_org_id', data.organizationId)
+          localStorage.setItem('mindscape_user_org_name', data.organizationName)
+        }
         navigate('/dashboard')
       } else {
         setError(data.error || 'Authentication failed')
@@ -117,19 +139,53 @@ export default function UserLoginPage() {
         <div className="card border-glow shimmer" style={{ padding: 'var(--space-2xl)' }}>
           <form onSubmit={handleSubmit}>
             {!isLogin && (
-              <div style={{ marginBottom: 'var(--space-lg)' }}>
-                <label style={{ fontFamily: 'var(--font-headline)', fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={e => { setName(e.target.value); setError('') }}
-                  placeholder="Enter your name"
-                  required={!isLogin}
-                  autoComplete="name"
-                />
-              </div>
+              <>
+                <div style={{ marginBottom: 'var(--space-lg)' }}>
+                  <label style={{ fontFamily: 'var(--font-headline)', fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={e => { setName(e.target.value); setError('') }}
+                    placeholder="Enter your name"
+                    required={!isLogin}
+                    autoComplete="name"
+                  />
+                </div>
+
+                <div style={{ marginBottom: 'var(--space-lg)' }}>
+                  <label style={{ fontFamily: 'var(--font-headline)', fontSize: '0.8rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>
+                    Select Organization (Optional)
+                  </label>
+                  <select
+                    value={selectedOrganization}
+                    onChange={e => setSelectedOrganization(e.target.value)}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem',
+                      borderRadius: 'var(--radius-md)',
+                      border: '1px solid var(--outline-variant)',
+                      background: 'var(--surface-container-highest)',
+                      color: 'var(--on-surface)',
+                      fontSize: '1rem',
+                      fontFamily: 'var(--font-body)'
+                    }}
+                  >
+                    <option value="">No organization</option>
+                    {organizations.map(org => (
+                      <option key={org.id} value={org.id}>
+                        {org.name}
+                      </option>
+                    ))}
+                  </select>
+                  {selectedOrganization && (
+                    <p style={{ fontSize: '0.75rem', marginTop: '0.5rem', color: 'var(--on-surface-variant)' }}>
+                      {organizations.find(o => o.id === parseInt(selectedOrganization))?.description}
+                    </p>
+                  )}
+                </div>
+              </>
             )}
 
             <div style={{ marginBottom: 'var(--space-lg)' }}>
