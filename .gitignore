@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 package-lock.json
@@ -65,3 +66,17 @@ pnpm-debug.log*
 
 # Batch files (optional - remove if you want to include)
 *.bat
+=======
+.DS_Store
+node_modules/
+.wrangler/
+.dev.vars
+.env
+.env.*
+!.env.example
+coverage/
+dist/
+*.log
+*.tsbuildinfo
+Screenshot *.png
+>>>>>>> b2993a445bf5f1684865b3dd7097aa829fac5783

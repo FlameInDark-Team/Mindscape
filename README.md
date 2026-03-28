@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🧠 MindScape - Mental Health Check-in Platform
 
 A comprehensive anonymous mental health check-in platform for college students with AI-powered support, gamification, and institutional analytics.
@@ -221,3 +222,83 @@ This platform provides supportive guidance but is NOT a replacement for professi
 ---
 
 Made with ❤️ for college student mental wellness
+=======
+# Mindscape Web
+
+Mindscape is a production-oriented pilot web app for college early support. It combines anonymous daily pulse check-ins, a weekly PHQ-2/GAD-2 screener, and an explicit opt-in counselor follow-up flow with institution-level cohort analytics.
+
+It now also includes a research knowledge layer derived from `mindscape_research_reference.docx`, plus a research assistant route that answers from that reference with optional Groq synthesis.
+
+## Stack
+
+- Hono + JSX on a Cloudflare-compatible runtime
+- TypeScript
+- HTMX for partial updates
+- Cloudflare D1 production persistence with in-memory fallback when `DB` is not bound
+- Resend-ready magic-link auth
+- Groq-ready optional reflection tagging
+
+## Quick start
+
+```bash
+pnpm install
+cp .dev.vars.example .dev.vars
+pnpm dev
+```
+
+Open `http://127.0.0.1:8787`.
+
+If you bind `DB` in `wrangler.toml`, the app initializes D1 tables on first use and stores:
+
+- student daily pulses
+- weekly screeners
+- support requests
+- risk events
+- admin magic tokens
+- research reference entries
+- assistant question history
+
+## Demo paths
+
+- `/` marketing + architecture landing page
+- `/research` local research reference page
+- `/assistant` research-backed assistant page
+- `/check-in/demo-university` student portal with daily pulse, weekly screener, and support request
+- `/admin/login` admin magic-link login
+- `/admin` admin dashboard
+- `/admin/cohorts/:id` cohort detail page
+- `/api/health` runtime status
+
+## Backend docs
+
+- [Backend architecture](./docs/backend-architecture.md)
+- [Backend operations](./docs/backend-operations.md)
+
+## Demo admin emails
+
+- `counselor@mindscape.demo`
+- `dean@mindscape.demo`
+
+If `RESEND_API_KEY` is not configured, the magic link is shown in preview mode on the login page.
+
+## Storage
+
+- Without `DB`, the app runs from seeded in-memory demo data.
+- With `DB`, the runtime uses D1-backed persistence and seeds the demo institution plus the research reference idempotently.
+- `schema.sql` mirrors the production D1 schema, including `research_entries` and `assistant_questions`.
+
+## Product model
+
+- Anonymous by default: daily pulse and weekly screeners are stored against a pseudonymous device hash.
+- Identifiable only by request: name, email, and phone only enter the system if a student explicitly submits the support request form.
+- Rules-based risk logic: daily pulse evaluates mood, stress, energy, sleep, connectedness, and safety status; weekly screens use PHQ-2/GAD-2 totals and thresholds.
+- Reflection AI is not the primary risk engine. It is limited to theme extraction and resource routing.
+- Research assistant answers are grounded in the local research reference shipped with the app. If `GROQ_API_KEY` is configured, answers are synthesized from retrieved local sections; otherwise the app falls back to deterministic local retrieval output.
+
+## Checks
+
+```bash
+pnpm lint
+pnpm test
+```
+>>>>>>> b2993a445bf5f1684865b3dd7097aa829fac5783

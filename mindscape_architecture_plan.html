@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <style>
 .arch-wrap{padding:1rem 0}
@@ -96,3 +97,100 @@
 </div>
 
 </div>
+=======
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mindscape Architecture Plan</title>
+  <style>
+    :root{--bg:#f8f5ee;--ink:#13201d;--muted:#54655d;--card:#fffaf2;--line:rgba(19,32,29,.12)}
+    *{box-sizing:border-box}body{margin:0;padding:32px;background:linear-gradient(180deg,#f8f5ee,#f2ede3);font:16px/1.6 Inter,system-ui,sans-serif;color:var(--ink)}
+    .shell{max-width:1120px;margin:0 auto}.hero,.panel,.card{background:rgba(255,250,242,.88);border:1px solid var(--line);border-radius:28px;box-shadow:0 16px 40px rgba(19,32,29,.07)}
+    .hero{padding:28px;margin-bottom:18px}.hero h1{margin:0 0 10px;font-size:42px;line-height:1;letter-spacing:-.04em}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--muted);margin:0 0 10px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card,.panel{padding:20px}.panel{margin-bottom:16px}.mermaid{background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px;overflow:auto}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.list li{padding:12px 0;border-top:1px solid var(--line)}.list li:first-child{border-top:0;padding-top:0}.muted{color:var(--muted)}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.hero h1{font-size:34px}}
+  </style>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <p class="eyebrow">Mindscape v1 · System Architecture</p>
+      <h1>Interpretable, low-cost, and privacy-safe</h1>
+      <p class="muted">The architecture is intentionally simple: Hono serves the student and admin surfaces, a rules engine evaluates daily and weekly signals, D1-ready tables document the production model, and identity enters the system only through an explicit support request.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <p class="eyebrow">Student surface</p>
+        <h3>Web app + PWA</h3>
+        <p class="muted">Daily pulse, weekly PHQ-2/GAD-2, crisis-safe copy, and opt-in support request form.</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Application layer</p>
+        <h3>Hono + TypeScript</h3>
+        <p class="muted">SSR pages, HTMX partials, session cookies for admins, and a small server-side rules engine.</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Production data</p>
+        <h3>D1-ready schema</h3>
+        <p class="muted">Separate tables for daily pulses, weekly screeners, support requests, risk events, calendar events, and resources.</p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Primary flow</p>
+      <div class="mermaid">
+flowchart TD
+  A[Student browser] --> B[Hono routes]
+  B --> C[Daily pulse evaluator]
+  B --> D[Weekly screener evaluator]
+  C --> E[D1 / in-memory repository]
+  D --> E
+  B --> F[Support request route]
+  F --> G[Support request store]
+  E --> H[Admin dashboard]
+  E --> I[Theme + cohort summaries]
+  B --> J[Resource routing]
+  J --> K[Campus resources + Tele-MANAS]
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <p class="eyebrow">Rules engine</p>
+        <ul class="list">
+          <li>Daily pulse computes a distress score from mood, stress, energy, sleep, connectedness, and explicit support status.</li>
+          <li>Weekly PHQ-2/GAD-2 creates the validated screening anchor.</li>
+          <li>Reflection AI is limited to theme tagging and support-resource suggestions.</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">Dashboard outputs</p>
+        <ul class="list">
+          <li>Campus pulse today</li>
+          <li>7-day high-concern share</li>
+          <li>Weekly completion</li>
+          <li>Support request queue</li>
+          <li>Cohort watchlist and calendar-linked strain</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">Privacy boundary</p>
+        <ul class="list">
+          <li>Pseudonymous device hash for anonymous usage.</li>
+          <li>Separate support request record for name / email / phone.</li>
+          <li>No passive sensing, GPS, contacts, or hidden identity stitching in v1.</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+</body>
+</html>
+>>>>>>> b2993a445bf5f1684865b3dd7097aa829fac5783

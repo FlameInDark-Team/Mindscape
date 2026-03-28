@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <style>
 .road-wrap{padding:1rem 0}
@@ -109,3 +110,93 @@
 </div>
 
 </div>
+=======
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mindscape Build Roadmap</title>
+  <style>
+    :root{--bg:#f8f5ee;--ink:#13201d;--muted:#54655d;--card:#fffaf2;--line:rgba(19,32,29,.12);--green:#1d9e75;--amber:#f0c24f}
+    *{box-sizing:border-box}body{margin:0;padding:32px;background:linear-gradient(180deg,#f8f5ee,#f2ede3);font:16px/1.6 Inter,system-ui,sans-serif;color:var(--ink)}
+    .shell{max-width:1120px;margin:0 auto}.hero,.phase{background:rgba(255,250,242,.88);border:1px solid var(--line);border-radius:28px;box-shadow:0 16px 40px rgba(19,32,29,.07)}
+    .hero{padding:28px;margin-bottom:18px}.hero h1{margin:0 0 10px;font-size:42px;line-height:1;letter-spacing:-.04em}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--muted);margin:0 0 10px}
+    .phase{padding:20px;margin-bottom:14px}.meta{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}.meta h2{margin:0}.pill{display:inline-flex;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;background:rgba(29,158,117,.12);color:#0b6b4e}
+    .list{display:grid;gap:10px;margin:14px 0 0;padding:0;list-style:none}.list li{padding:10px 0;border-top:1px solid var(--line)}.list li:first-child{border-top:0;padding-top:0}.muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <p class="eyebrow">Mindscape v1 · Delivery Roadmap</p>
+      <h1>Build sequence for a real pilot, not a demo-only artifact</h1>
+      <p class="muted">The roadmap now treats evidence, privacy, and support operations as first-class workstreams. The app should only claim what it can actually support in code, docs, and product behavior.</p>
+      <p class="muted"><strong>Sprint window:</strong> 11:20 AM to 2:00 PM.</p>
+    </section>
+
+    <section class="phase">
+      <div class="meta">
+        <div>
+          <p class="eyebrow">Phase 1</p>
+          <h2>Evidence and data contract</h2>
+        </div>
+        <span class="pill">11:20 AM - 11:45 AM</span>
+      </div>
+      <ul class="list">
+        <li>Lock product language around anonymous daily pulse, weekly PHQ-2/GAD-2, and hybrid opt-in follow-up.</li>
+        <li>Rewrite science, privacy, and data-source docs so unsupported claims are removed.</li>
+        <li>Freeze the schema and repository interface around daily pulses, weekly screeners, support requests, risk events, and calendar context.</li>
+      </ul>
+    </section>
+
+    <section class="phase">
+      <div class="meta">
+        <div>
+          <p class="eyebrow">Phase 2</p>
+          <h2>Student-facing runtime</h2>
+        </div>
+        <span class="pill">11:45 AM - 12:20 PM</span>
+      </div>
+      <ul class="list">
+        <li>Implement daily pulse route and rules engine.</li>
+        <li>Implement weekly PHQ-2/GAD-2 screener route.</li>
+        <li>Implement explicit support request flow with separate identifiable storage path.</li>
+        <li>Add resource routing for campus resources and India-specific support like Tele-MANAS.</li>
+      </ul>
+    </section>
+
+    <section class="phase">
+      <div class="meta">
+        <div>
+          <p class="eyebrow">Phase 3</p>
+          <h2>Admin and operations layer</h2>
+        </div>
+        <span class="pill">12:20 PM - 1:05 PM</span>
+      </div>
+      <ul class="list">
+        <li>Reshape the dashboard around weekly completion, high-concern share, support queue, and cohort watchlist.</li>
+        <li>Add cohort detail routes and calendar context panels.</li>
+        <li>Ensure risk events are understandable and audit-friendly.</li>
+      </ul>
+    </section>
+
+    <section class="phase">
+      <div class="meta">
+        <div>
+          <p class="eyebrow">Phase 4</p>
+          <h2>Pilot hardening</h2>
+        </div>
+        <span class="pill">1:05 PM - 2:00 PM</span>
+      </div>
+      <ul class="list">
+        <li>Wire D1 bindings, Turnstile, and production email delivery.</li>
+        <li>Add retention jobs and stronger support-request access controls.</li>
+        <li>Review copy, crisis-safe resource routing, and admin access boundaries.</li>
+        <li>Use synthetic + seeded pilot data until a real campus pilot is approved.</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
+>>>>>>> b2993a445bf5f1684865b3dd7097aa829fac5783

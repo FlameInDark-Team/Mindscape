@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <style>
 .mock-wrap{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:16px;font-family:var(--font-sans)}
@@ -139,3 +140,96 @@
     </div>
   </div>
 </div>
+=======
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mindscape Dashboard Mockup</title>
+  <style>
+    :root{--bg:#f8f5ee;--ink:#13201d;--muted:#54655d;--dark:#1a2e2a;--card:#fffaf2;--line:rgba(19,32,29,.12);--green:#1d9e75;--amber:#f0c24f;--red:#e24b4a}
+    *{box-sizing:border-box}body{margin:0;padding:32px;background:linear-gradient(180deg,#f8f5ee,#f2ede3);font:16px/1.6 Inter,system-ui,sans-serif;color:var(--ink)}
+    .shell{max-width:1140px;margin:0 auto}.hero,.panel,.metric,.row{background:rgba(255,250,242,.88);border:1px solid var(--line);border-radius:28px;box-shadow:0 16px 40px rgba(19,32,29,.07)}
+    .hero{padding:28px;margin-bottom:18px}.hero h1{margin:0 0 10px;font-size:42px;line-height:1;letter-spacing:-.04em}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--muted);margin:0 0 10px}
+    .panel{padding:20px}.bento{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin-bottom:16px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.metric{padding:18px}.metric.dark{background:linear-gradient(140deg,#182c28,#223b35);color:#f7f1e8;border-color:rgba(255,255,255,.08)}
+    .value{font-size:42px;line-height:1;letter-spacing:-.04em;margin:6px 0}.tiny{font-size:13px;color:var(--muted)}.metric.dark .tiny,.metric.dark .eyebrow{color:rgba(247,241,232,.78)}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.list li{padding:12px 0;border-top:1px solid var(--line)}.list li:first-child{border-top:0;padding-top:0}.row{padding:16px;margin-top:14px}
+    .tone-good{color:var(--green)}.tone-warn{color:#8a5a02}.tone-critical{color:var(--red)}
+    @media (max-width:900px){.bento,.grid{grid-template-columns:1fr}.hero h1{font-size:34px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <p class="eyebrow">Mindscape v1 · Dashboard Mockup</p>
+      <h1>What the admin actually needs to see</h1>
+      <p class="tiny">This version removes the old “top risk cohort” gimmick and replaces it with operational metrics that match the new evidence-backed product model.</p>
+    </section>
+
+    <section class="bento">
+      <div class="panel">
+        <div class="grid">
+          <article class="metric dark">
+            <p class="eyebrow">Campus pulse</p>
+            <div class="value">5.8</div>
+            <div class="tiny">Average daily pulse score today</div>
+          </article>
+          <article class="metric">
+            <p class="eyebrow">Weekly completion</p>
+            <div class="value tone-good">46%</div>
+            <div class="tiny">7-day PHQ-2/GAD-2 completion</div>
+          </article>
+          <article class="metric">
+            <p class="eyebrow">High concern share</p>
+            <div class="value tone-warn">18%</div>
+            <div class="tiny">Critical daily pulse share in the last 7 days</div>
+          </article>
+          <article class="metric">
+            <p class="eyebrow">Open support requests</p>
+            <div class="value tone-critical">4</div>
+            <div class="tiny">Opted-in counselor follow-ups awaiting action</div>
+          </article>
+          <article class="metric">
+            <p class="eyebrow">Today’s daily pulses</p>
+            <div class="value">132</div>
+            <div class="tiny">Anonymous student submissions today</div>
+          </article>
+          <article class="metric">
+            <p class="eyebrow">Top themes</p>
+            <div class="tiny">sleep, placements, pressure, finances</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p class="eyebrow">Active risk events</p>
+        <ul class="list">
+          <li><strong>CSE Semester 6 trend_drop</strong><br><span class="tiny">7-day mood trend is declining during project submission week.</span></li>
+          <li><strong>EE Semester 4 weekly_high</strong><br><span class="tiny">Weekly screens crossed the watch threshold during lab practicals.</span></li>
+          <li><strong>Support_requested</strong><br><span class="tiny">Multiple students opted into follow-up in the last 48 hours.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="row">
+      <p class="eyebrow">Cohort watchlist</p>
+      <div class="grid">
+        <article class="metric">
+          <strong>CSE Semester 6</strong>
+          <div class="tiny">Avg mood 4.4 · participation 39% · high concern 31% · weekly coverage 52%</div>
+        </article>
+        <article class="metric">
+          <strong>EE Semester 4</strong>
+          <div class="tiny">Avg mood 5.3 · participation 36% · high concern 18% · weekly coverage 44%</div>
+        </article>
+        <article class="metric">
+          <strong>Design Studio Year 3</strong>
+          <div class="tiny">Avg mood 6.6 · participation 29% · high concern 8% · weekly coverage 38%</div>
+        </article>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
+>>>>>>> b2993a445bf5f1684865b3dd7097aa829fac5783
