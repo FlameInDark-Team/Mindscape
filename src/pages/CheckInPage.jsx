@@ -498,8 +498,12 @@ export default function CheckInPage() {
                 {question.question}
               </h2>
 
-              {/* Options */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
+              {/* Options - 2x2 Grid for Desktop, Stack for Mobile */}
+              <div style={{ 
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
+                gap: 'var(--space-lg)',
+              }}>
                 {question.options.map((option, index) => (
                   <motion.button
                     key={index}
@@ -510,14 +514,18 @@ export default function CheckInPage() {
                     onMouseLeave={() => setHoveredOption(null)}
                     className="card card-glow"
                     style={{
-                      padding: 'var(--space-xl)',
+                      padding: 'var(--space-lg)',
                       textAlign: 'left',
                       cursor: 'pointer',
                       border: hoveredOption === index ? '3px solid var(--primary)' : '3px solid transparent',
                       transition: 'all 0.3s ease',
                       background: hoveredOption === index ? 'var(--primary-container)' : 'var(--surface-container-high)',
                       position: 'relative',
-                      overflow: 'hidden'
+                      overflow: 'hidden',
+                      minHeight: '140px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center'
                     }}
                   >
                     {/* Animated Background */}
@@ -538,69 +546,83 @@ export default function CheckInPage() {
                       />
                     )}
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-lg)', position: 'relative', zIndex: 1 }}>
-                      {/* Emoji Icon */}
-                      <div style={{
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '50%',
-                        background: hoveredOption === index ? 'var(--primary)' : 'var(--surface-container-highest)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '2rem',
-                        flexShrink: 0,
-                        transition: 'all 0.3s ease',
-                        boxShadow: hoveredOption === index ? '0 8px 20px var(--primary)40' : 'none'
-                      }}>
-                        {option.emoji}
-                      </div>
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      {/* Header with Emoji and Option Label */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', marginBottom: 'var(--space-md)' }}>
+                        {/* Emoji Icon */}
+                        <div style={{
+                          width: '50px',
+                          height: '50px',
+                          borderRadius: '50%',
+                          background: hoveredOption === index ? 'var(--primary)' : 'var(--surface-container-highest)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '1.75rem',
+                          flexShrink: 0,
+                          transition: 'all 0.3s ease',
+                          boxShadow: hoveredOption === index ? '0 8px 20px var(--primary)40' : 'none'
+                        }}>
+                          {option.emoji}
+                        </div>
 
-                      {/* Text Content */}
-                      <div style={{ flex: 1 }}>
+                        {/* Option Label */}
                         <div style={{ 
-                          fontSize: '0.75rem', 
+                          fontSize: '0.7rem', 
                           textTransform: 'uppercase', 
                           letterSpacing: '0.1em',
                           fontWeight: 700,
                           color: hoveredOption === index ? 'var(--primary)' : 'var(--on-surface-variant)',
-                          marginBottom: '0.5rem'
                         }}>
                           Option {String.fromCharCode(65 + index)}
                         </div>
-                        <p style={{ 
-                          margin: 0, 
-                          fontSize: '1.1rem', 
-                          fontWeight: 500,
-                          lineHeight: 1.5,
-                          color: hoveredOption === index ? 'var(--on-primary-container)' : 'var(--on-surface)'
-                        }}>
-                          {option.text}
-                        </p>
-                        <div style={{ 
-                          fontSize: '0.85rem', 
-                          marginTop: '0.5rem',
-                          color: hoveredOption === index ? 'var(--primary)' : 'var(--on-surface-variant)',
-                          fontWeight: 600
-                        }}>
-                          {option.trait}
-                        </div>
                       </div>
 
-                      {/* Arrow Icon */}
-                      <motion.div
-                        animate={{ x: hoveredOption === index ? 5 : 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <span className="material-symbols-outlined" style={{ 
-                          fontSize: '2rem',
-                          color: hoveredOption === index ? 'var(--primary)' : 'var(--on-surface-variant)',
-                          opacity: hoveredOption === index ? 1 : 0.5
-                        }}>
-                          arrow_forward
-                        </span>
-                      </motion.div>
+                      {/* Text Content */}
+                      <p style={{ 
+                        margin: '0 0 0.5rem', 
+                        fontSize: '0.95rem', 
+                        fontWeight: 500,
+                        lineHeight: 1.4,
+                        color: hoveredOption === index ? 'var(--on-primary-container)' : 'var(--on-surface)'
+                      }}>
+                        {option.text}
+                      </p>
+
+                      {/* Trait Badge */}
+                      <div style={{ 
+                        fontSize: '0.75rem', 
+                        color: hoveredOption === index ? 'var(--primary)' : 'var(--on-surface-variant)',
+                        fontWeight: 600,
+                        display: 'inline-block',
+                        padding: '0.25rem 0.75rem',
+                        borderRadius: 'var(--radius-sm)',
+                        background: hoveredOption === index ? 'var(--primary)20' : 'var(--surface-container-highest)'
+                      }}>
+                        {option.trait}
+                      </div>
                     </div>
+
+                    {/* Arrow Icon - Hidden on mobile for cleaner look */}
+                    <motion.div
+                      animate={{ x: hoveredOption === index ? 5 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      style={{
+                        position: 'absolute',
+                        bottom: 'var(--space-md)',
+                        right: 'var(--space-md)',
+                        display: 'none'
+                      }}
+                      className="desktop-only-arrow"
+                    >
+                      <span className="material-symbols-outlined" style={{ 
+                        fontSize: '1.5rem',
+                        color: hoveredOption === index ? 'var(--primary)' : 'var(--on-surface-variant)',
+                        opacity: hoveredOption === index ? 1 : 0.5
+                      }}>
+                        arrow_forward
+                      </span>
+                    </motion.div>
                   </motion.button>
                 ))}
               </div>

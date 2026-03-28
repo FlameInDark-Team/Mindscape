@@ -1638,3 +1638,80 @@ select:focus-visible {
     box-shadow: 0 0 40px rgba(125, 212, 212, 0.6);
   }
 }
+
+/* ═══════════════════════════════════════════════════════
+   Personality Assessment Responsive Layout
+   ═══════════════════════════════════════════════════════ */
+
+/* Desktop: Show arrow icon */
+@media (min-width: 769px) {
+  .desktop-only-arrow {
+    display: block !important;
+  }
+}
+
+/* Tablet and below: Hide arrow, optimize spacing */
+@media (max-width: 768px) {
+  .desktop-only-arrow {
+    display: none !important;
+  }
+  
+  /* Adjust card padding for mobile */
+  .card-glow {
+    padding: var(--space-lg) !important;
+  }
+  
+  /* Optimize question card spacing */
+  .page-container > div > div:nth-child(3) {
+    padding: var(--space-lg) !important;
+  }
+}
+
+/* Mobile optimization for personality options */
+@media (max-width: 480px) {
+  /* Reduce emoji size on small screens */
+  .card-glow > div > div:first-child > div:first-child {
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 1.5rem !important;
+  }
+  
+  /* Adjust text sizes for better readability */
+  .card-glow p {
+    font-size: 0.9rem !important;
+  }
+  
+  /* Reduce minimum height for options on small screens */
+  .card-glow[style*="minHeight"] {
+    min-height: 120px !important;
+  }
+}
+
+/* Landscape mobile: Optimize for horizontal space */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Use 2 columns in landscape mode for better space usage */
+  .page-container > div > div:nth-child(3) > div:last-child {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Large desktop: Ensure 2x2 grid */
+@media (min-width: 1200px) {
+  .page-container > div > div:nth-child(3) > div:last-child {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+/* Extra small devices: Stack vertically with optimized spacing */
+@media (max-width: 360px) {
+  .card-glow {
+    padding: var(--space-md) !important;
+    min-height: 110px !important;
+  }
+  
+  .card-glow > div > div:first-child {
+    gap: var(--space-sm) !important;
+  }
+}
