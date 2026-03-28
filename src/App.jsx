@@ -9,6 +9,7 @@ import AdminLoginPage from './pages/AdminLoginPage'
 import AdminDashboard from './pages/AdminDashboard'
 import UserLoginPage from './pages/UserLoginPage'
 import UserDashboard from './pages/UserDashboard'
+import FloatingChatbot from './components/FloatingChatbot'
 
 function ThemeToggle({ theme, setTheme }) {
   return (
@@ -294,6 +295,9 @@ function AppContent() {
 
       {/* Scroll to Top */}
       <ScrollToTop />
+
+      {/* Floating AI Chatbot - Available on all pages */}
+      <FloatingChatbot />
 
       {/* Routes */}
       <Routes>

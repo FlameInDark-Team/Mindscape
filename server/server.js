@@ -437,7 +437,7 @@ app.post('/api/admin/google-auth', (req, res) => {
 })
 
 // ─────────────────────────────────────────────
-// AI CHATBOT (Groq Integration)
+// AI CHATBOT (Groq Integration) - Authenticated Users
 // ─────────────────────────────────────────────
 app.post('/api/chat', async (req, res) => {
   try {
@@ -496,7 +496,7 @@ Remember: You're a supportive companion, not a therapist. Focus on practical wel
     // Call Groq API
     const completion = await groq.chat.completions.create({
       messages,
-      model: 'llama-3.3-70b-versatile', // Fast and capable model
+      model: 'llama-3.3-70b-versatile',
       temperature: 0.7,
       max_tokens: 800,
       top_p: 0.9
@@ -510,6 +510,79 @@ Remember: You're a supportive companion, not a therapist. Focus on practical wel
     })
   } catch (err) {
     console.error('Chat error:', err.message)
+    res.status(500).json({ error: 'Failed to process chat message' })
+  }
+})
+
+// ─────────────────────────────────────────────
+// AI CHATBOT (Anonymous) - For All Users
+// ─────────────────────────────────────────────
+app.post('/api/chat/anonymous', async (req, res) => {
+  try {
+    const { message, history } = req.body
+
+    if (!message || !message.trim()) {
+      return res.status(400).json({ error: 'Message is required' })
+    }
+
+    // Build conversation history for Groq
+    const messages = [
+      {
+        role: 'system',
+        content: `You are a compassionate AI mental health companion for college students using MindScape, a mental wellness platform. Your role is to:
+
+1. Provide empathetic, supportive responses to students dealing with stress, anxiety, burnout, and other mental health challenges
+2. Offer evidence-based coping strategies, mindfulness techniques, and self-care advice
+3. Encourage healthy habits like sleep hygiene, exercise, social connection, and time management
+4. Recognize when someone may need professional help and gently suggest they reach out to counselors or crisis resources
+5. Never diagnose conditions or replace professional mental health care
+6. Be warm, understanding, and non-judgmental
+7. Keep responses concise (2-4 paragraphs) and actionable
+8. Use encouraging language and validate their feelings
+
+IMPORTANT: If someone expresses suicidal thoughts or severe crisis, immediately encourage them to:
+- Call 988 (Suicide & Crisis Lifeline) in the US
+- Text "HELLO" to 741741 (Crisis Text Line)
+- Contact campus counseling services
+- Go to the nearest emergency room
+
+Remember: You're a supportive companion, not a therapist. Focus on practical wellness strategies and emotional support.`
+      }
+    ]
+
+    // Add conversation history (last 10 messages)
+    if (history && Array.isArray(history)) {
+      history.slice(-10).forEach(msg => {
+        messages.push({
+          role: msg.role === 'user' ? 'user' : 'assistant',
+          content: msg.content
+        })
+      })
+    }
+
+    // Add current message
+    messages.push({
+      role: 'user',
+      content: message
+    })
+
+    // Call Groq API
+    const completion = await groq.chat.completions.create({
+      messages,
+      model: 'llama-3.3-70b-versatile',
+      temperature: 0.7,
+      max_tokens: 800,
+      top_p: 0.9
+    })
+
+    const response = completion.choices[0]?.message?.content || 'I apologize, but I encountered an error. Please try again.'
+
+    res.json({
+      success: true,
+      response
+    })
+  } catch (err) {
+    console.error('Anonymous chat error:', err.message)
     res.status(500).json({ error: 'Failed to process chat message' })
   }
 })
