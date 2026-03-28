@@ -9,6 +9,7 @@ import AdminLoginPage from './pages/AdminLoginPage'
 import AdminDashboard from './pages/AdminDashboard'
 import UserLoginPage from './pages/UserLoginPage'
 import UserDashboard from './pages/UserDashboard'
+import PersonalityAssessmentPage from './pages/PersonalityAssessmentPage'
 import FloatingChatbot from './components/FloatingChatbot'
 
 function ThemeToggle({ theme, setTheme }) {
@@ -178,6 +179,28 @@ function MobileMenu({ isOpen, onClose }) {
               </NavLink>
               
               <NavLink
+                to="/personality"
+                onClick={onClose}
+                className={({ isActive }) => isActive ? 'mobile-nav-link active' : 'mobile-nav-link'}
+                style={{
+                  padding: 'var(--space-md)',
+                  borderRadius: 'var(--radius-md)',
+                  textDecoration: 'none',
+                  fontFamily: 'var(--font-headline)',
+                  fontWeight: 600,
+                  fontSize: '1rem',
+                  color: 'var(--on-surface)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  transition: 'all 0.3s'
+                }}
+              >
+                <span className="material-symbols-outlined">psychology</span>
+                Personality
+              </NavLink>
+              
+              <NavLink
                 to="/trends"
                 onClick={onClose}
                 className={({ isActive }) => isActive ? 'mobile-nav-link active' : 'mobile-nav-link'}
@@ -269,6 +292,7 @@ function AppContent() {
           <NavLink to="/" className="navbar-brand">MindScape</NavLink>
           <ul className="navbar-links">
             <li><NavLink to="/checkin" className={({isActive}) => isActive ? 'active' : ''}>Check In</NavLink></li>
+            <li><NavLink to="/personality" className={({isActive}) => isActive ? 'active' : ''}>Personality</NavLink></li>
             <li><NavLink to="/trends" className={({isActive}) => isActive ? 'active' : ''}>My Trends</NavLink></li>
             <li><NavLink to="/resources" className={({isActive}) => isActive ? 'active' : ''}>Resources</NavLink></li>
           </ul>
@@ -303,6 +327,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/checkin" element={<CheckInPage />} />
+        <Route path="/personality" element={<PersonalityAssessmentPage />} />
         <Route path="/trends" element={<PersonalTrendsPage />} />
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/login" element={<UserLoginPage />} />
