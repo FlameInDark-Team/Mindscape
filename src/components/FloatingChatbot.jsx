@@ -39,7 +39,10 @@ export default function FloatingChatbot() {
     setLoading(true)
 
     try {
-      const res = await fetch(`${API_URL}/api/chat/anonymous`, {
+      const apiUrl = API_URL || 'https://mindscape-b5oe.onrender.com'
+      console.log('Sending message to:', `${apiUrl}/api/chat/anonymous`)
+      
+      const res = await fetch(`${apiUrl}/api/chat/anonymous`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -50,7 +53,9 @@ export default function FloatingChatbot() {
         })
       })
 
+      console.log('Response status:', res.status)
       const data = await res.json()
+      console.log('Response data:', data)
 
       if (res.ok && data.response) {
         setMessages(prev => [...prev, {
@@ -61,14 +66,15 @@ export default function FloatingChatbot() {
       } else {
         setMessages(prev => [...prev, {
           role: 'assistant',
-          content: 'I apologize, but I encountered an error. Please try again or contact support if the issue persists.',
+          content: data.error || 'I apologize, but I encountered an error. Please try again or contact support if the issue persists.',
           timestamp: new Date()
         }])
       }
     } catch (err) {
+      console.error('Chat error:', err)
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: 'Connection error. Please check your internet connection and try again.',
+        content: `Unable to connect to the AI service. Please try again in a moment. (Error: ${err.message})`,
         timestamp: new Date()
       }])
     } finally {
@@ -213,7 +219,8 @@ export default function FloatingChatbot() {
                   padding: 'var(--space-md)',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 'var(--space-sm)'
+                  gap: 'var(--space-sm)',
+                  background: 'var(--surface-container-lowest)'
                 }}>
                   {messages.map((msg, i) => (
                     <motion.div
@@ -230,19 +237,23 @@ export default function FloatingChatbot() {
                         padding: 'var(--space-sm) var(--space-md)',
                         borderRadius: 'var(--radius-md)',
                         background: msg.role === 'user' 
-                          ? 'var(--primary)' 
+                          ? 'linear-gradient(135deg, #00796b, #00897b)' 
                           : 'var(--surface-container-high)',
                         color: msg.role === 'user' 
-                          ? 'var(--on-primary)' 
-                          : 'var(--on-surface)'
+                          ? '#ffffff' 
+                          : 'var(--on-surface)',
+                        boxShadow: msg.role === 'user' 
+                          ? '0 2px 8px rgba(0, 121, 107, 0.3)' 
+                          : '0 2px 8px rgba(0, 0, 0, 0.1)'
                       }}>
-                        <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.5 }}>
+                        <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.5, fontWeight: msg.role === 'user' ? '500' : '400' }}>
                           {msg.content}
                         </p>
                         <p style={{ 
                           margin: '0.25rem 0 0', 
                           fontSize: '0.7rem', 
-                          opacity: 0.7 
+                          opacity: msg.role === 'user' ? 0.9 : 0.7,
+                          fontWeight: '400'
                         }}>
                           {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </p>
