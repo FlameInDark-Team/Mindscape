@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mindscape Data Sources</title>
+  <style>
+    :root{--bg:#f8f5ee;--ink:#13201d;--muted:#54655d;--card:#fffaf2;--line:rgba(19,32,29,.12);--green:#1d9e75;--amber:#f0c24f;--red:#e24b4a}
+    *{box-sizing:border-box}body{margin:0;padding:32px;background:linear-gradient(180deg,#f8f5ee,#f2ede3);font:16px/1.6 Inter,system-ui,sans-serif;color:var(--ink)}
+    .shell{max-width:1120px;margin:0 auto}.hero,.panel,.card{background:rgba(255,250,242,.86);border:1px solid var(--line);border-radius:28px;box-shadow:0 16px 40px rgba(19,32,29,.07)}
+    .hero{padding:28px 28px 22px;margin-bottom:18px}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--muted);margin:0 0 10px}.hero h1{margin:0 0 10px;font-size:42px;line-height:1;letter-spacing:-.04em}
+    .hero p,.small{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.panel{padding:20px;margin-bottom:18px}.card{padding:18px}.card h3,.panel h2{margin:0 0 8px}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.list li{padding:12px 0;border-top:1px solid var(--line)}.list li:first-child{border-top:0;padding-top:0}
+    .tag{display:inline-flex;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;margin-right:8px}.tag.green{background:rgba(29,158,117,.12);color:#0d6a4e}.tag.amber{background:rgba(240,194,79,.18);color:#8a5a02}.tag.red{background:rgba(226,75,74,.12);color:#992928}
+    .table{width:100%;border-collapse:collapse}.table th,.table td{padding:12px 10px;border-top:1px solid var(--line);text-align:left;vertical-align:top}.table th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .mermaid{background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px;overflow:auto}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.hero h1{font-size:34px}}
+  </style>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <p class="eyebrow">Mindscape v1 · Data Model</p>
+      <h1>What data we use, and why</h1>
+      <p>Mindscape does not discover the product problem from its own data. The product problem is established by external public evidence. The app then collects a narrow set of runtime signals to support early intervention at cohort level and opt-in follow-up at student level.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <p class="eyebrow">External evidence</p>
+        <h3>Used to justify the problem</h3>
+        <p class="small">WHO, Healthy Minds, AUCCCD, UGC, Tele-MANAS, and screening literature define the campus mental-health burden and help-seeking gap.</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Institution setup</p>
+        <h3>Used to give context</h3>
+        <p class="small">Institution profile, cohorts, department sizes, and calendar events like exams, lab practicals, and placement weeks.</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Runtime student data</p>
+        <h3>Used to drive the product</h3>
+        <p class="small">Anonymous daily pulse, weekly PHQ-2/GAD-2, safety status, resource request, and explicit support opt-in.</p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Signal Flow</p>
+      <div class="mermaid">
+flowchart LR
+  A[Public evidence<br/>WHO + HMS + AUCCCD + UGC] --> B[Problem framing]
+  C[Institution setup<br/>cohorts + calendar + resources] --> D[Rules engine]
+  E[Daily pulse<br/>mood + stress + energy + sleep + connectedness] --> D
+  F[Weekly screen<br/>PHQ-2 + GAD-2 + safety status] --> D
+  G[Optional reflection<br/>theme extraction only] --> D
+  D --> H[Cohort dashboard]
+  D --> I[Resource routing]
+  D --> J[Opt-in support request]
+  J --> K[Identifiable follow-up queue]
+      </div>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">V1 Collection</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Data</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag green">Daily pulse</span></td>
+            <td>Mood 1-10, stress 1-5, energy 1-5, sleep quality 1-5, connectedness 1-5, optional 160-char reflection, safety status, wants resources now</td>
+            <td>Creates a daily distress profile and trend line without clinical overload.</td>
+          </tr>
+          <tr>
+            <td><span class="tag green">Weekly screener</span></td>
+            <td>PHQ-2 + GAD-2, weekly support preference, safety status</td>
+            <td>Anchors the product in a validated short screening layer.</td>
+          </tr>
+          <tr>
+            <td><span class="tag amber">Operational</span></td>
+            <td>Response gaps, 7-day trend, weekly completion, repeated high-concern pulses, support-request volume</td>
+            <td>Improves cohort-level triage and dashboard signal quality.</td>
+          </tr>
+          <tr>
+            <td><span class="tag amber">Institution context</span></td>
+            <td>Cohort, department, exam weeks, placement weeks, lab practical periods, local resource directory</td>
+            <td>Helps counseling teams interpret spikes in context.</td>
+          </tr>
+          <tr>
+            <td><span class="tag red">Opt-in only</span></td>
+            <td>Name, email, phone, preferred contact, support note</td>
+            <td>Stored only when a student explicitly requests follow-up.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <p class="eyebrow">Do Use</p>
+        <ul class="list">
+          <li><strong>Validated short screeners.</strong><br><span class="small">PHQ-2 and GAD-2 are compact enough for weekly use and evidence-backed enough for a student product.</span></li>
+          <li><strong>Trend over time.</strong><br><span class="small">The dashboard should care about repeated strain and falling trajectory, not only one bad day.</span></li>
+          <li><strong>Explicit support intent.</strong><br><span class="small">If a student requests help, that is a stronger operational signal than any passive guess.</span></li>
+        </ul>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">Use Softly</p>
+        <ul class="list">
+          <li><strong>Response gaps.</strong><br><span class="small">Useful as an operational cue, but not sufficient on their own for a “risk” claim.</span></li>
+          <li><strong>Reflection themes.</strong><br><span class="small">Good for resource routing and theme clustering; not the primary risk engine.</span></li>
+          <li><strong>Calendar overlays.</strong><br><span class="small">Interpretive context only, not a clinical signal.</span></li>
+        </ul>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">Do Not Use in V1</p>
+        <ul class="list">
+          <li><strong>No passive sensing core.</strong><br><span class="small">Phone telemetry, GPS, contacts, and similar signals stay out of the v1 product.</span></li>
+          <li><strong>No hidden identification.</strong><br><span class="small">Institutions cannot reverse anonymous pulse data into a student identity.</span></li>
+          <li><strong>No black-box diagnosis.</strong><br><span class="small">Mindscape is an early-support tool, not a diagnostic system.</span></li>
+        </ul>
+      </article>
+    </section>
+  </div>
+</body>
+</html>

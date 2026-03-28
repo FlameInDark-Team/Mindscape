@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Willow Hearth | Student Mental Health Support</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#2d342f",
+              "on-primary-container": "#195b5b",
+              "on-surface-variant": "#5a615b",
+              "on-secondary-container": "#385851",
+              "secondary-dim": "#3a5952",
+              "on-tertiary-container": "#644a19",
+              "tertiary-container": "#fed799",
+              "outline": "#757d76",
+              "tertiary": "#765a28",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#26453f",
+              "tertiary-dim": "#694f1e",
+              "primary-dim": "#1b5c5c",
+              "error-container": "#fa746f",
+              "surface-container-high": "#e4eae2",
+              "inverse-surface": "#0c0f0c",
+              "tertiary-fixed-dim": "#efc98c",
+              "secondary-fixed": "#c7eae1",
+              "surface-container": "#eaefe8",
+              "surface-bright": "#f8faf5",
+              "on-primary": "#e0fffe",
+              "primary-fixed-dim": "#a2dfdf",
+              "primary": "#2a6868",
+              "secondary-container": "#c7eae1",
+              "outline-variant": "#adb4ac",
+              "on-tertiary-fixed": "#4f3707",
+              "inverse-primary": "#befcfc",
+              "on-primary-fixed": "#004748",
+              "on-secondary": "#e3fff7",
+              "on-tertiary": "#fff8f2",
+              "primary-fixed": "#b0eeed",
+              "surface-variant": "#dde4dc",
+              "primary-container": "#b0eeed",
+              "error": "#a83836",
+              "tertiary-fixed": "#fed799",
+              "surface": "#f8faf5",
+              "secondary-fixed-dim": "#b9dcd3",
+              "on-tertiary-fixed-variant": "#6f5322",
+              "on-error-container": "#6e0a12",
+              "on-background": "#2d342f",
+              "background": "#f8faf5",
+              "on-primary-fixed-variant": "#256565",
+              "on-secondary-fixed-variant": "#42615b",
+              "surface-dim": "#d5dcd4",
+              "surface-tint": "#2a6868",
+              "secondary": "#46655e",
+              "surface-container-low": "#f1f5ef",
+              "error-dim": "#67040d",
+              "inverse-on-surface": "#9b9e99",
+              "surface-container-highest": "#dde4dc",
+              "on-error": "#fff7f6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .tonal-transition-bg {
+        background: linear-gradient(180deg, rgba(248, 250, 245, 0.9) 0%, rgba(248, 250, 245, 0.7) 100%);
+      }
+      .asymmetric-hero {
+        padding-top: clamp(8rem, 15vh, 12rem);
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#f8faf5]/80 dark:bg-[#1a1c18]/80 backdrop-blur-xl">
+<nav class="flex justify-between items-center px-12 py-6 max-w-[1440px] mx-auto">
+<div class="text-2xl font-bold text-[#4F8B8B] dark:text-[#91d1d1] tracking-tighter font-headline">
+                Willow Hearth
+            </div>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex items-center gap-10">
+<a class="font-headline tracking-tight font-bold text-lg text-[#2d342f]/60 dark:text-[#e4eae2]/60 hover:text-[#4F8B8B] hover:bg-[#f1f5ef] dark:hover:bg-[#2d342f] transition-colors duration-300" href="#">Resources</a>
+<a class="font-headline tracking-tight font-bold text-lg text-[#2d342f]/60 dark:text-[#e4eae2]/60 hover:text-[#4F8B8B] hover:bg-[#f1f5ef] dark:hover:bg-[#2d342f] transition-colors duration-300" href="#">Journal</a>
+<a class="font-headline tracking-tight font-bold text-lg text-[#2d342f]/60 dark:text-[#e4eae2]/60 hover:text-[#4F8B8B] hover:bg-[#f1f5ef] dark:hover:bg-[#2d342f] transition-colors duration-300" href="#">Community</a>
+<a class="font-headline tracking-tight font-bold text-lg text-[#4F8B8B] dark:text-[#91d1d1] border-b-2 border-[#4F8B8B] pb-1" href="#">Support</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-[#2d342f]/60 dark:text-[#e4eae2]/60 hover:text-[#4F8B8B] transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications">notifications</span>
+</button>
+<button class="text-[#2d342f]/60 dark:text-[#e4eae2]/60 hover:text-[#4F8B8B] transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="max-w-[1000px] mx-auto px-6 asymmetric-hero">
+<!-- Two Column Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-10 gap-12 items-start">
+<!-- Left Column: Content (60%) -->
+<div class="lg:col-span-6 space-y-12">
+<div class="space-y-6">
+<h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-on-surface leading-[1.1]">
+                        We're really glad you checked in <span class="text-primary inline-block">💚</span>
+</h1>
+<p class="text-xl text-on-surface-variant font-body leading-relaxed max-w-lg">
+                        You're not alone. Here are a few small things that might help right now.
+                    </p>
+</div>
+<!-- Cards Container -->
+<div class="space-y-6">
+<!-- Primary Card: Breathing -->
+<div class="group bg-surface-container-lowest p-10 rounded-xl shadow-[0_12px_32px_rgba(45,52,47,0.06)] transition-all hover:translate-y-[-4px] border border-outline-variant/15">
+<div class="flex items-start gap-6">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-3xl" data-icon="air">air</span>
+</div>
+<div class="space-y-4">
+<h3 class="font-headline text-2xl font-bold">1-minute breathing exercise</h3>
+<p class="text-on-surface-variant leading-relaxed">A simple, guided rhythm to help ground your nervous system and find a moment of stillness.</p>
+<button class="mt-4 bg-primary text-on-primary px-8 py-4 rounded-full font-bold font-headline transition-all active:scale-95 hover:shadow-lg hover:shadow-primary/20">
+                                    Start breathing
+                                </button>
+</div>
+</div>
+</div>
+<!-- Secondary Card: Counselor -->
+<div class="bg-surface-container-low p-10 rounded-xl border border-outline-variant/15 transition-all">
+<div class="flex items-start gap-6">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-3xl" data-icon="support_agent">support_agent</span>
+</div>
+<div class="space-y-4">
+<h3 class="font-headline text-2xl font-bold">Talk to a counselor</h3>
+<p class="text-on-surface-variant leading-relaxed">Sometimes we need a compassionate ear. Connect with professional support tailored for students.</p>
+<button class="mt-4 border-2 border-primary text-primary px-8 py-4 rounded-full font-bold font-headline transition-all hover:bg-primary/5 active:scale-95">
+                                    View support options
+                                </button>
+</div>
+</div>
+</div>
+<!-- Tertiary Card: Tips -->
+<a class="flex items-center justify-between bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:bg-surface-bright group transition-all" href="#">
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-tertiary" data-icon="lightbulb">lightbulb</span>
+<span class="font-headline text-lg font-semibold">Explore tips for stress, sleep, and anxiety</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Right Column: Visual (40%) -->
+<div class="lg:col-span-4 sticky top-32">
+<div class="relative group">
+<!-- Image with Tonal Layering effect -->
+<div class="rounded-xl overflow-hidden shadow-[0_24px_48px_rgba(45,52,47,0.12)] aspect-[3/4]">
+<img alt="Peaceful forest scene" class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 transition-transform duration-[3s] ease-out" data-alt="Sunlight filtering through a serene dense forest of ancient tall trees with soft morning mist and lush green ferns on the ground" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRaMTctOZvY8HBJtsaW7Df7Gv7KrqL6foVB1-42G_INF_VN3AldLphQSfxVgrlP193q_0TTyTuz6B1HlZ6UVPaFo2kYK9MaRAaZMOCFyZkJiy2Zo5M7yGaytXMTlvvh4I2_8n6_GwcrPh3lgIH0rxMQfGyNGj6-wlPMlXj5YAogrmtgwgQryGbaxclz8wu7d-Er9LRZKRV3MJUxDabRmL_3eguXf3OLin3AtWKhgpQ8W9PSZkf5RAnJ8n-CfoNbYw0z8JExwTX5EJk"/>
+<!-- Floating Glass Action -->
+<div class="absolute bottom-8 left-8 right-8 glass-card p-6 rounded-lg text-center">
+<p class="font-headline text-on-surface font-semibold tracking-tight">"Just breathe. You are exactly where you need to be."</p>
+</div>
+</div>
+<!-- Decorative Asymmetry Elements -->
+<div class="absolute -top-6 -right-6 w-24 h-24 bg-tertiary-container/30 rounded-full blur-2xl -z-10"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-container/20 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+</div>
+<!-- Emergency Note -->
+<div class="mt-24 text-center max-w-2xl mx-auto py-12 px-8 bg-error-container/5 rounded-lg border border-error/10">
+<div class="flex items-center justify-center gap-3 text-error mb-2">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+<span class="font-headline font-bold">Immediate Support</span>
+</div>
+<p class="text-on-surface-variant font-medium">
+                If you're in immediate danger, please contact local emergency services or visit the nearest emergency room. You are worth the help.
+            </p>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-[3rem] mt-20 bg-[#f1f5ef] dark:bg-[#1a1c18]">
+<div class="flex flex-col md:flex-row justify-between items-start px-20 py-16 gap-8 max-w-[1440px] mx-auto">
+<div class="space-y-4">
+<div class="text-lg font-bold text-[#4F8B8B] font-headline">Willow Hearth Sanctuary</div>
+<p class="font-['Inter'] text-sm leading-relaxed text-[#2d342f]/70 dark:text-[#e4eae2]/70 max-w-xs">
+                    © 2024 Willow Hearth Sanctuary. You are not alone.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-x-16 gap-y-4">
+<a class="text-sm font-['Inter'] text-[#2d342f]/70 dark:text-[#e4eae2]/70 hover:text-[#4F8B8B] underline-offset-4 hover:underline transition-all duration-200" href="#">Emergency: 988 Suicide &amp; Crisis Lifeline</a>
+<a class="text-sm font-['Inter'] text-[#2d342f]/70 dark:text-[#e4eae2]/70 hover:text-[#4F8B8B] underline-offset-4 hover:underline transition-all duration-200" href="#">Student Support Services</a>
+<a class="text-sm font-['Inter'] text-[#2d342f]/70 dark:text-[#e4eae2]/70 hover:text-[#4F8B8B] underline-offset-4 hover:underline transition-all duration-200" href="#">Privacy Sanctuary</a>
+<a class="text-sm font-['Inter'] text-[#2d342f]/70 dark:text-[#e4eae2]/70 hover:text-[#4F8B8B] underline-offset-4 hover:underline transition-all duration-200" href="#">Terms of Care</a>
+</div>
+</div>
+</footer>
+</body></html>

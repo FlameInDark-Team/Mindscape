@@ -1,0 +1,111 @@
+
+<style>
+.road-wrap{padding:1rem 0}
+.phase{margin-bottom:16px}
+.ph-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.ph-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.ph-title{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.ph-sub{font-size:11px;color:var(--color-text-secondary);margin-left:auto}
+.task-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.task{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:8px 10px;display:flex;gap:8px;align-items:flex-start}
+.tk-icon{font-size:13px;flex-shrink:0;margin-top:1px}
+.tk-text{font-size:11px;color:var(--color-text-secondary);line-height:1.4;margin:0}
+.tk-bold{font-weight:500;color:var(--color-text-primary);display:block;margin-bottom:1px}
+.ph-1 .ph-num{background:#E1F5EE;color:#085041}
+.ph-2 .ph-num{background:#EEEDFE;color:#3C3489}
+.ph-3 .ph-num{background:#FAEEDA;color:#633806}
+.ph-4 .ph-num{background:#E6F1FB;color:#0C447C}
+.ph-5 .ph-num{background:#EAF3DE;color:#27500A}
+.stack-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.st-tag{font-size:11px;padding:3px 10px;border-radius:8px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.st-tag.react{border-color:#1E40AF;color:#1E40AF;background:#DBEAFE}
+.st-tag.free{border-color:#0F6E56;color:#0F6E56;background:#E1F5EE}
+</style>
+<div class="road-wrap">
+
+<div class="phase ph-1">
+  <div class="ph-header">
+    <div class="ph-num">1</div>
+    <span class="ph-title">Setup & scaffolding</span>
+    <span class="ph-sub">Phase 1 · ✅ Complete</span>
+  </div>
+  <div class="task-grid">
+    <div class="task"><span class="tk-icon">⚙️</span><p class="tk-text"><span class="tk-bold">Vite + React 18 init</span>package.json, vite.config.js with API proxy, React Router v6 setup</p></div>
+    <div class="task"><span class="tk-icon">🎨</span><p class="tk-text"><span class="tk-bold">Design system (index.css)</span>Dark theme, glassmorphism, CSS variables, animations, responsive breakpoints</p></div>
+    <div class="task"><span class="tk-icon">🗄️</span><p class="tk-text"><span class="tk-bold">SQLite DB setup</span>Schema: mood_entries, alerts, resources, admin_users. 14-day demo data seeder.</p></div>
+    <div class="task"><span class="tk-icon">📦</span><p class="tk-text"><span class="tk-bold">Dependencies</span>React, Framer Motion, Chart.js, react-chartjs-2, Express, better-sqlite3, cors</p></div>
+  </div>
+</div>
+
+<div class="phase ph-2">
+  <div class="ph-header">
+    <div class="ph-num">2</div>
+    <span class="ph-title">Student check-in flow</span>
+    <span class="ph-sub">Phase 2 · ✅ Complete</span>
+  </div>
+  <div class="task-grid">
+    <div class="task"><span class="tk-icon">😊</span><p class="tk-text"><span class="tk-bold">Emoji mood grid</span>10 interactive emoji buttons (1-10 scale) with Framer Motion bounce animations</p></div>
+    <div class="task"><span class="tk-icon">📝</span><p class="tk-text"><span class="tk-bold">Check-in form</span>Stressor tag selector, 280-char text input, submit to API + localStorage</p></div>
+    <div class="task"><span class="tk-icon">💚</span><p class="tk-text"><span class="tk-bold">Resource nudge modal</span>Animated overlay shows breathing exercise + counselor contact when score < 4</p></div>
+    <div class="task"><span class="tk-icon">✅</span><p class="tk-text"><span class="tk-bold">Success animation</span>Scale-in check mark, mood confirmation, links to trends and home</p></div>
+  </div>
+</div>
+
+<div class="phase ph-3">
+  <div class="ph-header">
+    <div class="ph-num">3</div>
+    <span class="ph-title">Admin dashboard (bento grid)</span>
+    <span class="ph-sub">Phase 3 · ✅ Complete</span>
+  </div>
+  <div class="task-grid">
+    <div class="task"><span class="tk-icon">📊</span><p class="tk-text"><span class="tk-bold">Bento layout + hero card</span>Dark teal campus mood card with distribution bar, alerts panel, participation donut</p></div>
+    <div class="task"><span class="tk-icon">📈</span><p class="tk-text"><span class="tk-bold">Trend charts</span>Chart.js line chart (7-day/30-day), bar chart by department, tab switching</p></div>
+    <div class="task"><span class="tk-icon">☁️</span><p class="tk-text"><span class="tk-bold">Word cloud</span>Animated word tags from today's check-in themes with hover effects</p></div>
+    <div class="task"><span class="tk-icon">🤖</span><p class="tk-text"><span class="tk-bold">AI weekly digest</span>Pre-generated plain-English summary with email and PDF export buttons</p></div>
+  </div>
+</div>
+
+<div class="phase ph-4">
+  <div class="ph-header">
+    <div class="ph-num">4</div>
+    <span class="ph-title">Supporting pages</span>
+    <span class="ph-sub">Phase 4 · ✅ Complete</span>
+  </div>
+  <div class="task-grid">
+    <div class="task"><span class="tk-icon">🏠</span><p class="tk-text"><span class="tk-bold">Landing page</span>Animated hero with floating orbs, feature cards, how-it-works, statistics bar, CTA</p></div>
+    <div class="task"><span class="tk-icon">📊</span><p class="tk-text"><span class="tk-bold">Personal trends</span>7-day line chart, streak counter, average score, trend arrow, top stressors</p></div>
+    <div class="task"><span class="tk-icon">🫁</span><p class="tk-text"><span class="tk-bold">Resources page</span>Interactive 4-7-8 breathing exercise circle, self-help articles, counselor contacts</p></div>
+    <div class="task"><span class="tk-icon">🔑</span><p class="tk-text"><span class="tk-bold">Admin login</span>Simple auth form with demo credentials (admin / mindscape2024)</p></div>
+  </div>
+</div>
+
+<div class="phase ph-5">
+  <div class="ph-header">
+    <div class="ph-num">5</div>
+    <span class="ph-title">Backend API</span>
+    <span class="ph-sub">Phase 5 · ✅ Complete</span>
+  </div>
+  <div class="task-grid">
+    <div class="task"><span class="tk-icon">🌐</span><p class="tk-text"><span class="tk-bold">Express.js server</span>REST API on port 3001 with CORS, JSON body parsing, health check</p></div>
+    <div class="task"><span class="tk-icon">🔔</span><p class="tk-text"><span class="tk-bold">Trend detection</span>Auto-checks 3-day rolling avg on each check-in, generates burnout alerts if avg < 4.0</p></div>
+    <div class="task"><span class="tk-icon">📡</span><p class="tk-text"><span class="tk-bold">API endpoints</span>POST /api/checkin, GET /api/trends, GET /api/admin/dashboard, POST /api/admin/login</p></div>
+    <div class="task"><span class="tk-icon">🌱</span><p class="tk-text"><span class="tk-bold">Demo data seeder</span>14 days × 40-80 entries/day across 5 depts with realistic score distributions</p></div>
+  </div>
+</div>
+
+<div style="margin-top:14px">
+  <p style="font-size:12px;font-weight:500;color:var(--color-text-secondary);margin:0 0 8px">FULL STACK AT A GLANCE</p>
+  <div class="stack-row">
+    <span class="st-tag react">React 18</span>
+    <span class="st-tag react">Vite 5</span>
+    <span class="st-tag react">Framer Motion</span>
+    <span class="st-tag react">React Router v6</span>
+    <span class="st-tag">Chart.js 4</span>
+    <span class="st-tag">Express.js</span>
+    <span class="st-tag free">SQLite (better-sqlite3)</span>
+    <span class="st-tag free">Google Fonts (Outfit + Inter)</span>
+    <span class="st-tag free">ReactBits.dev inspired UI</span>
+  </div>
+</div>
+
+</div>

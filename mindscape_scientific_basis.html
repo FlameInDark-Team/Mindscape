@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mindscape Scientific Basis</title>
+  <style>
+    :root{--bg:#f8f5ee;--ink:#13201d;--muted:#53645d;--card:#fffaf2;--line:rgba(19,32,29,.12);--green:#1d9e75;--amber:#f0c24f}
+    *{box-sizing:border-box}body{margin:0;padding:32px;background:linear-gradient(180deg,#f8f5ee,#f2ede3);font:16px/1.6 Inter,system-ui,sans-serif;color:var(--ink)}
+    .shell{max-width:1100px;margin:0 auto}.hero,.panel{background:rgba(255,250,242,.88);border:1px solid var(--line);border-radius:28px;box-shadow:0 16px 40px rgba(19,32,29,.07)}
+    .hero{padding:28px;margin-bottom:18px}.hero h1{margin:0 0 10px;font-size:42px;line-height:1;letter-spacing:-.04em}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--muted);margin:0 0 10px}
+    .panel{padding:20px;margin-bottom:16px}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:12px 10px;border-top:1px solid var(--line);vertical-align:top;text-align:left}.table th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.list li{padding:12px 0;border-top:1px solid var(--line)}.list li:first-child{border-top:0;padding-top:0}
+    .pill{display:inline-flex;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}.pill.fact{background:rgba(29,158,117,.12);color:#0b6b4e}.pill.choice{background:rgba(240,194,79,.18);color:#8a5a02}
+    a{color:inherit}.muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <p class="eyebrow">Mindscape v1 · Scientific Basis</p>
+      <h1>What is evidence, and what is just a product choice</h1>
+      <p class="muted">The previous version of this document overstated several claims. This revision keeps the product grounded in what is supported by public research and clearly labels where Mindscape is making a pragmatic v1 design choice.</p>
+    </section>
+
+    <section class="panel">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>What it supports</th>
+            <th>Mindscape implication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://www.who.int/europe/health-topics/mental-health/addressing-child-and-adolescent-mental-health">WHO</a></td>
+            <td>Mental-health conditions often begin before age 24, so higher education is a critical early-intervention setting.</td>
+            <td>Colleges are a valid first market and intervention context.</td>
+          </tr>
+          <tr>
+            <td><a href="https://healthymindsnetwork.org/research/data-for-researchers/">Healthy Minds Network</a></td>
+            <td>College mental-health prevalence, help-seeking, and campus-level variation can be benchmarked at national scale.</td>
+            <td>Mindscape should expose cohort-level prevalence and participation patterns, not only individual anecdotes.</td>
+          </tr>
+          <tr>
+            <td><a href="https://pubmed.ncbi.nlm.nih.gov/32191145/">Help-seeking and stigma study</a></td>
+            <td>Stigma and social concerns reduce treatment-seeking among college students.</td>
+            <td>The student flow must be low-stigma, short, and anonymous by default.</td>
+          </tr>
+          <tr>
+            <td><a href="https://pubmed.ncbi.nlm.nih.gov/27455918/">PHQ-4 study in college students</a></td>
+            <td>Ultra-brief anxiety/depression screening is usable in campus populations.</td>
+            <td>Weekly PHQ-2 + GAD-2 is a defensible v1 choice.</td>
+          </tr>
+          <tr>
+            <td><a href="https://pubmed.ncbi.nlm.nih.gov/40130828/">GAD-2 review</a></td>
+            <td>GAD-2 has acceptable to good screening accuracy.</td>
+            <td>Weekly anxiety screening can stay short and still be useful.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.aucccd.org/assets/documents/Survey/2023-2024%20Annual%20Survey%20Report%20Public.pdf">AUCCCD survey</a></td>
+            <td>Counseling support is linked to academic and persistence benefits.</td>
+            <td>The buyer value proposition should emphasize retention and support operations, not only wellness language.</td>
+          </tr>
+          <tr>
+            <td><a href="https://pubmed.ncbi.nlm.nih.gov/40811794/">Passive sensing review</a></td>
+            <td>Passive sensing is promising but methodologically uneven and privacy-sensitive.</td>
+            <td>Passive sensing stays out of the core v1 risk engine.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Keep</p>
+      <ul class="list">
+        <li><span class="pill fact">Fact</span> <strong>Short validated screening is better than ad-hoc scoring language.</strong><br><span class="muted">Mindscape should not claim that a mood slider is equivalent to PHQ-9.</span></li>
+        <li><span class="pill fact">Fact</span> <strong>Frequent self-report helps reduce recall distortion.</strong><br><span class="muted">That supports daily pulse design, but not a claim that daily pulse alone can diagnose risk.</span></li>
+        <li><span class="pill fact">Fact</span> <strong>Help-seeking friction matters.</strong><br><span class="muted">Anonymous first-touch design is a product response to that evidence.</span></li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Rewrite</p>
+      <ul class="list">
+        <li><span class="pill choice">Product choice</span> <strong>“Trend slope matters.”</strong><br><span class="muted">Keep this as a product rule, not a scientific claim that trend is universally more predictive than current state.</span></li>
+        <li><span class="pill choice">Product choice</span> <strong>“Late-night check-ins add risk.”</strong><br><span class="muted">Treat as a soft operational observation only, or leave it out of the core risk logic entirely.</span></li>
+        <li><span class="pill choice">Product choice</span> <strong>“AI text severity changes risk.”</strong><br><span class="muted">In v1, AI should tag themes and suggest resources; it should not be the primary risk engine.</span></li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Explicit non-claims</p>
+      <ul class="list">
+        <li><strong>Mindscape is not a diagnosis system.</strong><br><span class="muted">It is an early-support and routing product.</span></li>
+        <li><strong>Mindscape does not identify anonymous students behind the scenes.</strong><br><span class="muted">Identity only appears when a student explicitly requests follow-up.</span></li>
+        <li><strong>Mindscape does not claim clinically validated passive sensing in v1.</strong><br><span class="muted">That work is deferred to a later ethics-reviewed pilot.</span></li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

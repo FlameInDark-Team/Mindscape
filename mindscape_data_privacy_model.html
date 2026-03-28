@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mindscape Privacy Model</title>
+  <style>
+    :root{--bg:#f8f5ee;--ink:#13201d;--muted:#54655d;--card:#fffaf2;--line:rgba(19,32,29,.12);--green:#1d9e75;--amber:#f0c24f;--red:#e24b4a}
+    *{box-sizing:border-box}body{margin:0;padding:32px;background:linear-gradient(180deg,#f8f5ee,#f2ede3);font:16px/1.6 Inter,system-ui,sans-serif;color:var(--ink)}
+    .shell{max-width:1120px;margin:0 auto}.hero,.panel,.card{background:rgba(255,250,242,.88);border:1px solid var(--line);border-radius:28px;box-shadow:0 16px 40px rgba(19,32,29,.07)}
+    .hero{padding:28px;margin-bottom:18px}.hero h1{margin:0 0 10px;font-size:42px;line-height:1;letter-spacing:-.04em}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--muted);margin:0 0 10px}
+    .panel{padding:20px;margin-bottom:16px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{padding:18px}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:12px 10px;border-top:1px solid var(--line);text-align:left;vertical-align:top}.table th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .tag{display:inline-flex;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}.tag.green{background:rgba(29,158,117,.12);color:#0b6b4e}.tag.red{background:rgba(226,75,74,.12);color:#982d2d}.tag.amber{background:rgba(240,194,79,.18);color:#8a5a02}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.list li{padding:12px 0;border-top:1px solid var(--line)}.list li:first-child{border-top:0;padding-top:0}
+    .mermaid{background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px;overflow:auto}.muted{color:var(--muted)}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.hero h1{font-size:34px}}
+  </style>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <p class="eyebrow">Mindscape v1 · Privacy Model</p>
+      <h1>Anonymous by default, identifiable only by request</h1>
+      <p class="muted">Mindscape should treat its data as sensitive wellness data. The privacy model is not “this is not health data”; it is “this is wellness data handled with strict minimization and an explicit identity boundary.”</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <p class="eyebrow">Default state</p>
+        <h3>Anonymous runtime</h3>
+        <p class="muted">Daily pulses and weekly screens are linked to a pseudonymous device hash only. Admins see cohort-level risk, never a student identity.</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Identity boundary</p>
+        <h3>Separate support queue</h3>
+        <p class="muted">Name, email, or phone are captured only in the opt-in support request form and stored in a separate support request record.</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Default posture</p>
+        <h3>Minimize and expire</h3>
+        <p class="muted">No GPS, no contacts, no raw passive sensing, no hidden cross-linking, and retention windows should be explicit in production.</p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Data lifecycle</p>
+      <div class="mermaid">
+flowchart LR
+  A[Student daily pulse] --> B[Pseudonymous device hash]
+  C[Weekly screen] --> B
+  B --> D[Rules engine]
+  D --> E[Cohort dashboard]
+  D --> F[Resource routing]
+  G[Support request form] --> H[Name + email/phone]
+  H --> I[Support request queue]
+  I --> J[Counselor follow-up]
+      </div>
+    </section>
+
+    <section class="panel">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Data class</th>
+            <th>Stored by default?</th>
+            <th>Who can see it?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag green">Daily pulse answers</span></td>
+            <td>Yes</td>
+            <td>Used by the rules engine and aggregated into cohort dashboards.</td>
+          </tr>
+          <tr>
+            <td><span class="tag green">Weekly PHQ-2/GAD-2</span></td>
+            <td>Yes</td>
+            <td>Used for cohort-level risk shares and weekly completion metrics.</td>
+          </tr>
+          <tr>
+            <td><span class="tag amber">Reflection excerpt + tags</span></td>
+            <td>Only if submitted</td>
+            <td>Theme extraction for resource routing and cohort themes. Keep short and avoid long-form journaling storage.</td>
+          </tr>
+          <tr>
+            <td><span class="tag red">Name / email / phone</span></td>
+            <td>No, unless support is requested</td>
+            <td>Only the support-request queue and authorized counselor workflow.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Explicit exclusions</p>
+      <ul class="list">
+        <li><strong>No GPS, contacts, call logs, messages, or browsing data.</strong></li>
+        <li><strong>No hidden student re-identification from pulse data.</strong></li>
+        <li><strong>No claim that administrators can see “individual risk” in anonymous mode.</strong></li>
+        <li><strong>No passive sensing in v1.</strong></li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Production retention defaults</p>
+      <ul class="list">
+        <li><strong>Daily pulse:</strong> retain detailed row-level records for operational analytics, then aggregate or prune on a defined retention schedule.</li>
+        <li><strong>Reflection text:</strong> keep only shortened excerpts or derived tags; avoid indefinite raw-text storage.</li>
+        <li><strong>Support request identity:</strong> retain only as long as needed for counseling follow-up and audit obligations.</li>
+        <li><strong>Logs:</strong> never log raw contact details or support-note content.</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

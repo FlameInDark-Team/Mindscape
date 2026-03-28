@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MindScape Clinical Admin - Campus Mood Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-dim": "#121222",
+              "on-tertiary-container": "#711419",
+              "on-secondary": "#013824",
+              "on-background": "#e3e0f8",
+              "surface-tint": "#4edea3",
+              "on-tertiary": "#650911",
+              "inverse-on-surface": "#2f2f40",
+              "surface-container-highest": "#333345",
+              "surface-container-lowest": "#0c0c1d",
+              "error-container": "#93000a",
+              "surface-variant": "#333345",
+              "on-secondary-fixed": "#002113",
+              "on-secondary-container": "#91c4a8",
+              "surface": "#121222",
+              "error": "#ffb4ab",
+              "outline": "#86948a",
+              "outline-variant": "#3c4a42",
+              "surface-container-low": "#1a1a2b",
+              "secondary": "#9ed2b5",
+              "on-tertiary-fixed-variant": "#842225",
+              "on-surface-variant": "#bbcabf",
+              "primary-fixed-dim": "#4edea3",
+              "inverse-primary": "#006c49",
+              "on-primary": "#003824",
+              "tertiary-container": "#fc7c78",
+              "surface-container": "#1e1e2f",
+              "on-primary-fixed-variant": "#005236",
+              "secondary-fixed": "#baeed1",
+              "on-error-container": "#ffdad6",
+              "on-tertiary-fixed": "#410005",
+              "on-surface": "#e3e0f8",
+              "tertiary-fixed": "#ffdad7",
+              "surface-bright": "#38374a",
+              "primary-fixed": "#6ffbbe",
+              "primary": "#4edea3",
+              "on-secondary-fixed-variant": "#1e4f3a",
+              "inverse-surface": "#e3e0f8",
+              "on-primary-fixed": "#002113",
+              "secondary-container": "#21523c",
+              "tertiary-fixed-dim": "#ffb3af",
+              "surface-container-high": "#29283a",
+              "tertiary": "#ffb3af",
+              "on-primary-container": "#00422b",
+              "primary-container": "#10b981",
+              "secondary-fixed-dim": "#9ed2b5",
+              "background": "#121222",
+              "on-error": "#690005"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #121222; }
+        .glass-card {
+            background: rgba(51, 51, 69, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(78, 222, 163, 0.1);
+        }
+        .emerald-glow {
+            text-shadow: 0 0 8px rgba(78, 222, 163, 0.4);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+<body class="text-on-surface antialiased overflow-x-hidden">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-[#1e1e2f] border-r border-[#333345]/30 shadow-[16px_0_32px_rgba(18,18,34,0.04)] z-50 flex flex-col py-8 px-4 font-['Manrope'] antialiased tracking-tight">
+<div class="mb-10 px-4">
+<h1 class="text-xl font-bold tracking-wider text-[#4edea3]">MindScape</h1>
+<p class="text-[0.65rem] uppercase tracking-[0.1rem] text-on-surface-variant opacity-70">Clinical Admin</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-[#4edea3] bg-[#333345] rounded-sm font-semibold transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#bbcabf] hover:text-[#4edea3] transition-colors hover:bg-[#333345]/50 group" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span>Departments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#bbcabf] hover:text-[#4edea3] transition-colors hover:bg-[#333345]/50 group" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Insights</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#bbcabf] hover:text-[#4edea3] transition-colors hover:bg-[#333345]/50 group" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span>Alerts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#bbcabf] hover:text-[#4edea3] transition-colors hover:bg-[#333345]/50 group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 py-4 rounded-lg bg-surface-container-low border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[0.7rem] font-bold text-primary tracking-widest uppercase">System Status: Active</span>
+</div>
+<p class="text-[0.6rem] text-on-surface-variant">HIPAA Compliant Node 4.2</p>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 right-0 left-64 h-20 z-40 bg-[#121222]/80 backdrop-blur-xl border-b border-[#333345]/15 flex justify-between items-center px-10 font-['Manrope'] text-sm font-medium">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-sm pl-10 pr-4 py-2 text-on-surface focus:ring-1 focus:ring-primary/40 placeholder:text-on-surface-variant/40" placeholder="Search clinical data..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="relative">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications_none">notifications_none</span>
+</button>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-tertiary rounded-full"></span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/20 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Dr. Aris Thorne</p>
+<p class="text-[0.6rem] text-on-surface-variant uppercase tracking-tighter">Chief Administrator</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full object-cover border border-primary/20" data-alt="professional medical director headshot in clinical setting with soft blue ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5c0PD725krHmLSsdObWltKSFuxMfmD4VOejdN1hNVOUTcsllrKHZUey0vPggcwjMLfaUegVW0lOv6OPTP81vvM2fsHi3XS7yrAxTeTuvPCxbAIyZS-ReUyl0KzYnjcsQ4jYL0lRDINV1W1Ct-ct4f9bL9RmbR_T7licEffD41knoMnAiLdnkooN3gRrmUrk8XOwu1DO8xtR6sA7cqFMauMqLrQxb2iMqji3OxBfmP5UL-RF3eIHwM3a0xHTBvPUVDfDs9EzqDyHo"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 pb-20 px-10 min-h-screen">
+<!-- Hero Section: Campus Mood Score -->
+<section class="mb-10">
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#003824] to-[#121222] border border-primary/20 p-10 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+<div class="relative z-10 space-y-4 max-w-xl">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[0.65rem] font-bold uppercase tracking-widest mb-2">
+                        Real-time Campus Vitality
+                    </div>
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface">Campus Mood Overview</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                        Aggregate cognitive health analysis across all clinical departments. Data reflects 2,408 active participants in the last 24-hour cycle.
+                    </p>
+<div class="pt-4 flex gap-4">
+<button class="bg-primary-container text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">
+                            Generate Full Report
+                        </button>
+<button class="border border-outline-variant/30 text-on-surface px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-surface-container-high transition-colors">
+                            View Methodology
+                        </button>
+</div>
+</div>
+<div class="relative z-10 bg-surface-container-highest/40 backdrop-blur-2xl p-8 rounded-2xl border border-white/5 flex flex-col items-center justify-center min-w-[280px]">
+<span class="text-on-surface-variant text-xs uppercase tracking-widest font-bold mb-2">Mood Score</span>
+<div class="text-7xl font-black text-primary tracking-tighter emerald-glow italic">
+                        6.4<span class="text-3xl not-italic opacity-40 ml-1 text-on-surface">/10</span>
+</div>
+<div class="mt-4 flex items-center gap-2 text-primary bg-primary/5 px-3 py-1 rounded-full border border-primary/10">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-xs font-bold">+0.8 vs last week</span>
+</div>
+</div>
+<!-- Abstract Decorative Element -->
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="bento-grid">
+<!-- Card 1: 3D Donut Chart (Mood Distribution) -->
+<div class="col-span-12 lg:col-span-4 glass-card rounded-xl p-8 flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Mood Distribution</h3>
+<span class="material-symbols-outlined text-primary/60 group-hover:scale-110 transition-transform" data-icon="pie_chart">pie_chart</span>
+</div>
+<div class="relative h-56 flex items-center justify-center">
+<!-- Abstract 3D Donut Visualization -->
+<div class="absolute w-44 h-44 rounded-full border-[18px] border-surface-container-highest shadow-inner"></div>
+<div class="absolute w-44 h-44 rounded-full border-[18px] border-transparent border-t-primary border-r-primary rotate-45"></div>
+<div class="absolute w-44 h-44 rounded-full border-[18px] border-transparent border-b-tertiary-container -rotate-12"></div>
+<div class="absolute w-44 h-44 rounded-full border-[18px] border-transparent border-l-secondary-fixed/40 rotate-[140deg]"></div>
+<div class="text-center">
+<span class="block text-3xl font-bold text-on-surface">62%</span>
+<span class="text-[0.6rem] uppercase tracking-wider text-on-surface-variant font-bold">Resilient</span>
+</div>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-3 gap-2 text-[0.65rem] font-bold uppercase tracking-tighter">
+<div class="flex flex-col items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-on-surface-variant">Optimal</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+<span class="text-on-surface-variant">Stressed</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed/40"></span>
+<span class="text-on-surface-variant">Neutral</span>
+</div>
+</div>
+</div>
+<!-- Card 2: 3D Bar Chart (Department Scores) -->
+<div class="col-span-12 lg:col-span-8 glass-card rounded-xl p-8 group">
+<div class="flex items-center justify-between mb-10">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Comparative Department Metrics</h3>
+<div class="flex gap-2">
+<button class="bg-surface-container-high px-3 py-1 rounded text-xs text-primary font-bold">Week</button>
+<button class="bg-transparent px-3 py-1 rounded text-xs text-on-surface-variant font-bold hover:text-on-surface transition-colors">Month</button>
+</div>
+</div>
+<div class="flex items-end justify-between h-64 gap-6 px-4">
+<!-- Bar 1 -->
+<div class="flex-1 flex flex-col items-center group/bar">
+<div class="relative w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 overflow-hidden" style="height: 85%;">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-primary group-hover/bar:opacity-80"></div>
+<div class="absolute top-2 left-1/2 -translate-x-1/2 text-[0.6rem] font-black text-on-primary">8.5</div>
+</div>
+<span class="mt-4 text-[0.6rem] uppercase tracking-tighter text-on-surface-variant font-bold truncate w-full text-center">Psychiatry</span>
+</div>
+<!-- Bar 2 -->
+<div class="flex-1 flex flex-col items-center group/bar">
+<div class="relative w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 overflow-hidden" style="height: 62%;">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-primary/80"></div>
+<div class="absolute top-2 left-1/2 -translate-x-1/2 text-[0.6rem] font-black text-on-primary">6.2</div>
+</div>
+<span class="mt-4 text-[0.6rem] uppercase tracking-tighter text-on-surface-variant font-bold truncate w-full text-center">Neurology</span>
+</div>
+<!-- Bar 3 -->
+<div class="flex-1 flex flex-col items-center group/bar">
+<div class="relative w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 overflow-hidden" style="height: 44%;">
+<div class="absolute inset-0 bg-gradient-to-t from-tertiary-container/80 to-tertiary-container"></div>
+<div class="absolute top-2 left-1/2 -translate-x-1/2 text-[0.6rem] font-black text-on-tertiary">4.4</div>
+</div>
+<span class="mt-4 text-[0.6rem] uppercase tracking-tighter text-on-surface-variant font-bold truncate w-full text-center">Emergency</span>
+</div>
+<!-- Bar 4 -->
+<div class="flex-1 flex flex-col items-center group/bar">
+<div class="relative w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 overflow-hidden" style="height: 78%;">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-primary"></div>
+<div class="absolute top-2 left-1/2 -translate-x-1/2 text-[0.6rem] font-black text-on-primary">7.8</div>
+</div>
+<span class="mt-4 text-[0.6rem] uppercase tracking-tighter text-on-surface-variant font-bold truncate w-full text-center">Cardiology</span>
+</div>
+<!-- Bar 5 -->
+<div class="flex-1 flex flex-col items-center group/bar">
+<div class="relative w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 overflow-hidden" style="height: 58%;">
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-secondary/80"></div>
+<div class="absolute top-2 left-1/2 -translate-x-1/2 text-[0.6rem] font-black text-on-secondary">5.8</div>
+</div>
+<span class="mt-4 text-[0.6rem] uppercase tracking-tighter text-on-surface-variant font-bold truncate w-full text-center">Nursing</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Word Cloud (Linguistic Insights) -->
+<div class="col-span-12 lg:col-span-5 glass-card rounded-xl p-8 relative overflow-hidden group">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-6">Cognitive Sentiment Cloud</h3>
+<div class="flex flex-wrap items-center justify-center gap-4 py-6 relative z-10">
+<span class="text-4xl font-extrabold text-primary opacity-90 hover:scale-110 transition-transform cursor-default">Resilience</span>
+<span class="text-2xl font-light text-on-surface opacity-60 hover:text-primary transition-colors cursor-default">Stress</span>
+<span class="text-3xl font-bold text-secondary-fixed opacity-80 hover:scale-110 transition-transform cursor-default">Community</span>
+<span class="text-xl font-medium text-tertiary-container hover:scale-110 transition-transform cursor-default">Anxiety</span>
+<span class="text-2xl font-black text-on-surface-variant opacity-50 hover:text-on-surface transition-colors cursor-default">Growth</span>
+<span class="text-3xl font-light text-primary/70 hover:scale-110 transition-transform cursor-default">Support</span>
+<span class="text-xl font-bold text-on-surface opacity-40 uppercase tracking-widest">Focus</span>
+<span class="text-2xl font-medium text-secondary hover:text-primary transition-colors cursor-default">Wellness</span>
+</div>
+<!-- Subtle background depth -->
+<div class="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center">
+<span class="material-symbols-outlined text-[15rem]" data-icon="forum">forum</span>
+</div>
+</div>
+<!-- Card 4: Active Alerts Panel -->
+<div class="col-span-12 lg:col-span-3 glass-card rounded-xl p-8 flex flex-col group">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Active Alerts</h3>
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-tertiary-container text-[0.6rem] font-bold text-on-tertiary-container">3</span>
+</div>
+<div class="space-y-4 flex-1">
+<div class="p-3 rounded-lg bg-tertiary-container/10 border-l-2 border-tertiary-container group/alert">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[0.6rem] font-black uppercase text-tertiary-container">Critical Shift</span>
+<span class="text-[0.5rem] text-on-surface-variant">2m ago</span>
+</div>
+<p class="text-[0.7rem] text-on-surface leading-tight">Emergency Department mood drop detected (-1.4).</p>
+</div>
+<div class="p-3 rounded-lg bg-primary/5 border-l-2 border-primary/40 group/alert">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[0.6rem] font-black uppercase text-primary">System Notice</span>
+<span class="text-[0.5rem] text-on-surface-variant">15m ago</span>
+</div>
+<p class="text-[0.7rem] text-on-surface leading-tight">Weekly Resilience survey successfully deployed.</p>
+</div>
+<div class="p-3 rounded-lg bg-secondary-container/10 border-l-2 border-secondary-container group/alert">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[0.6rem] font-black uppercase text-secondary">Insight Log</span>
+<span class="text-[0.5rem] text-on-surface-variant">1h ago</span>
+</div>
+<p class="text-[0.7rem] text-on-surface leading-tight">Cardiology shows sustained growth for 3 days.</p>
+</div>
+</div>
+<button class="mt-6 text-[0.65rem] font-bold uppercase tracking-widest text-primary hover:underline flex items-center gap-2">
+                    View Alert History <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Card 5: List of Department Scores -->
+<div class="col-span-12 lg:col-span-4 glass-card rounded-xl p-8 group">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-6">Department Rank</h3>
+<div class="space-y-1">
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-[0.6rem] font-black text-on-surface-variant">01</span>
+<span class="text-xs font-bold text-on-surface">Psychiatry</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="h-1.5 w-16 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+<span class="text-xs font-black text-primary">8.5</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-[0.6rem] font-black text-on-surface-variant">02</span>
+<span class="text-xs font-bold text-on-surface">Cardiology</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="h-1.5 w-16 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[78%]"></div>
+</div>
+<span class="text-xs font-black text-primary">7.8</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-[0.6rem] font-black text-on-surface-variant">03</span>
+<span class="text-xs font-bold text-on-surface">Neurology</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="h-1.5 w-16 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[62%]"></div>
+</div>
+<span class="text-xs font-black text-secondary">6.2</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-high transition-colors opacity-60">
+<div class="flex items-center gap-3">
+<span class="text-[0.6rem] font-black text-on-surface-variant">04</span>
+<span class="text-xs font-bold text-on-surface">Emergency</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="h-1.5 w-16 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[44%]"></div>
+</div>
+<span class="text-xs font-black text-tertiary-container">4.4</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Anchor -->
+<footer class="fixed bottom-0 right-0 left-64 py-4 bg-[#333345]/60 backdrop-blur-[20px] border-t border-[#4edea3]/10 flex justify-between items-center px-10 font-['Manrope'] text-[0.75rem] uppercase tracking-[0.05rem] z-40">
+<div class="text-[#bbcabf]">
+            © 2024 <span class="text-[#4edea3] font-bold">MindScape Clinical Systems</span>. HIPAA Compliant.
+        </div>
+<div class="flex gap-8">
+<a class="text-[#bbcabf] hover:text-[#4edea3] underline transition-all" href="#">Security Protocol</a>
+<a class="text-[#bbcabf] hover:text-[#4edea3] underline transition-all" href="#">Support Desk</a>
+<a class="text-[#bbcabf] hover:text-[#4edea3] underline transition-all" href="#">System Logs</a>
+</div>
+</footer>
+</body></html>

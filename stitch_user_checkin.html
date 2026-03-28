@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MindSpace - Mood Check-In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#004748",
+              "on-error-container": "#6e0a12",
+              "secondary-fixed": "#c7eae1",
+              "on-secondary": "#e3fff7",
+              "inverse-on-surface": "#9b9e99",
+              "surface-container": "#eaefe8",
+              "surface-container-low": "#f1f5ef",
+              "primary-container": "#b0eeed",
+              "on-surface-variant": "#5a615b",
+              "on-primary-fixed-variant": "#256565",
+              "inverse-surface": "#0c0f0c",
+              "surface-tint": "#2a6868",
+              "on-primary-container": "#195b5b",
+              "on-error": "#fff7f6",
+              "secondary-fixed-dim": "#b9dcd3",
+              "error-dim": "#67040d",
+              "outline": "#757d76",
+              "error-container": "#fa746f",
+              "on-secondary-container": "#385851",
+              "error": "#a83836",
+              "surface-variant": "#dde4dc",
+              "secondary": "#46655e",
+              "surface-container-high": "#e4eae2",
+              "primary-fixed": "#b0eeed",
+              "on-tertiary-container": "#644a19",
+              "on-secondary-fixed-variant": "#42615b",
+              "primary-dim": "#1b5c5c",
+              "secondary-dim": "#3a5952",
+              "tertiary-container": "#fed799",
+              "tertiary": "#765a28",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#6f5322",
+              "background": "#f8faf5",
+              "primary-fixed-dim": "#a2dfdf",
+              "outline-variant": "#adb4ac",
+              "on-primary": "#e0fffe",
+              "on-surface": "#2d342f",
+              "surface-container-highest": "#dde4dc",
+              "on-tertiary-fixed": "#4f3707",
+              "tertiary-fixed-dim": "#efc98c",
+              "primary": "#2a6868",
+              "surface-bright": "#f8faf5",
+              "tertiary-dim": "#694f1e",
+              "on-background": "#2d342f",
+              "on-secondary-fixed": "#26453f",
+              "surface-dim": "#d5dcd4",
+              "secondary-container": "#c7eae1",
+              "tertiary-fixed": "#fed799",
+              "on-tertiary": "#fff8f2",
+              "inverse-primary": "#befcfc",
+              "surface": "#f8faf5"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 32px;
+            height: 32px;
+            background: #2a6868;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(42, 104, 104, 0.2);
+            border: 4px solid #ffffff;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 32px;
+            height: 32px;
+            background: #2a6868;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(42, 104, 104, 0.2);
+            border: 4px solid #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f8faf5]/80 dark:bg-[#1a1c18]/80 backdrop-blur-md flex justify-between items-center px-8 h-20 max-w-full mx-auto tonal-transition">
+<div class="text-2xl font-bold text-[#4F8B8B] dark:text-[#80cbc4] tracking-tighter font-headline">MindSpace</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-headline font-semibold tracking-tight text-[#4F8B8B] dark:text-[#80cbc4] border-b-2 border-[#4F8B8B] pb-1 transition-all" href="#">Home</a>
+<a class="font-headline font-semibold tracking-tight text-[#2d342f] dark:text-[#e4eae2] opacity-70 hover:opacity-100 hover:text-[#4F8B8B] transition-all" href="#">Resources</a>
+<a class="font-headline font-semibold tracking-tight text-[#2d342f] dark:text-[#e4eae2] opacity-70 hover:opacity-100 hover:text-[#4F8B8B] transition-all" href="#">About</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="material-symbols-outlined text-[#2d342f] opacity-70 hover:opacity-100 transition-all">notifications</button>
+<div class="h-10 w-10 rounded-full overflow-hidden bg-surface-container-high ring-2 ring-primary-container/30">
+<img alt="User profile" data-alt="Close-up portrait of a serene young woman with soft natural lighting and a peaceful expression, lifestyle photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhnFTY0tAIEOqEk4JbCjcqfTHAqeOicJdkixVJar_ea4QuYWS9SjQmjNpvdthMW7o5jOzzfRoqqiRd9h9YKb9ewUPOX10xfOqTrvg9ig23MNwJPUYIGdC_9aNtpe76ZSwMpEibZazIe5cYQS_cbTxAoh4Z__Kl1GUv5UxQRRfE0giVaPihv6fLFh-LFHcybwgdggZmQtt3Z0-qrake7pShffXbdCnw3kGFCfub7o0c0WrirMqJVEQZLB42Ti1vR6SJefsYc95FUxn3"/>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 flex flex-col items-center justify-center max-w-4xl mx-auto">
+<!-- Header Section -->
+<header class="text-center mb-16 space-y-4">
+<h1 class="font-headline text-5xl md:text-6xl font-extrabold text-on-surface tracking-tight leading-tight">
+                How are you feeling right now?
+            </h1>
+<p class="text-on-surface-variant text-lg max-w-lg mx-auto leading-relaxed">
+                Take a moment to check in with yourself. Your emotional well-being matters to us.
+            </p>
+</header>
+<!-- Main Card Section -->
+<section class="w-full bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-[0_12px_32px_rgba(45,52,47,0.06)] relative overflow-hidden">
+<!-- Abstract Aesthetic Background (Corner) -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl"></div>
+<!-- Mood Slider Interaction -->
+<div class="relative z-10 space-y-12">
+<div class="flex flex-col items-center space-y-8">
+<!-- Dynamic Emoji Display -->
+<div class="flex items-center justify-center w-32 h-32 bg-surface-container-low rounded-xl">
+<!-- We use a large icon as a placeholder for the high-res emoji logic -->
+<span class="text-7xl">😌</span>
+</div>
+<div class="w-full space-y-4">
+<div class="flex justify-between text-sm font-semibold text-on-surface-variant px-2">
+<span>Down</span>
+<span>Neutral</span>
+<span>Radiant</span>
+</div>
+<input class="w-full h-3 bg-surface-container-highest rounded-full appearance-none cursor-pointer" max="100" min="1" type="range" value="70"/>
+</div>
+</div>
+<!-- Reflection Text Area -->
+<div class="space-y-4">
+<label class="font-headline text-xl font-bold text-on-surface flex items-center gap-2" for="reflection">
+                        Want to share more?
+                        <span class="text-sm font-normal text-on-surface-variant opacity-60">(Optional)</span>
+</label>
+<div class="relative">
+<textarea class="w-full p-6 bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary-container focus:bg-primary-container/10 text-on-surface placeholder:text-on-surface-variant/40 transition-all resize-none font-body text-lg" id="reflection" placeholder="Type your reflections here..." rows="4"></textarea>
+<div class="absolute bottom-4 right-4 text-xs font-medium text-on-surface-variant/50">
+                            0 / 500
+                        </div>
+</div>
+</div>
+<!-- Footer Actions in Card -->
+<div class="flex flex-col items-center space-y-6 pt-4">
+<button class="w-full md:w-auto px-12 py-5 bg-gradient-to-br from-primary to-primary-dim text-on-primary font-headline font-bold text-lg rounded-full shadow-lg hover:scale-95 transition-all duration-200">
+                        Submit anonymously
+                    </button>
+<div class="flex items-center gap-2 text-on-surface-variant/60 text-sm">
+<span class="material-symbols-outlined text-base">lock</span>
+<p>This is completely anonymous</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Insights / Bento Grid Pattern -->
+<section class="w-full mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-low rounded-xl p-8 space-y-4 border border-outline-variant/15">
+<span class="material-symbols-outlined text-primary p-3 bg-primary-container rounded-lg" data-weight="fill">lightbulb</span>
+<h3 class="font-headline font-bold text-xl">Quick Tip</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                    Try the 4-7-8 breathing technique if you're feeling overwhelmed. Inhale for 4, hold for 7, exhale for 8.
+                </p>
+</div>
+<div class="bg-surface-container-high rounded-xl p-8 space-y-4 border border-outline-variant/15">
+<span class="material-symbols-outlined text-tertiary p-3 bg-tertiary-container rounded-lg" data-weight="fill">history</span>
+<h3 class="font-headline font-bold text-xl">Past Week</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                    You've checked in 4 times this week. Consistency helps you track emotional patterns over time.
+                </p>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-12 px-8 bg-[#f1f5ef] dark:bg-[#1a1c18] flex flex-col md:flex-row justify-between items-center gap-4 tonal-transition-top">
+<p class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-[#2d342f] dark:text-[#e4eae2] opacity-50">
+            © 2024 MindSpace Digital Sanctuary. All rights reserved.
+        </p>
+<div class="flex gap-8">
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-[#2d342f] dark:text-[#e4eae2] opacity-50 hover:opacity-100 hover:text-[#4F8B8B] transition-all" href="#">Privacy Policy</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-[#2d342f] dark:text-[#e4eae2] opacity-50 hover:opacity-100 hover:text-[#4F8B8B] transition-all" href="#">Terms of Service</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-[#2d342f] dark:text-[#e4eae2] opacity-50 hover:opacity-100 hover:text-[#4F8B8B] transition-all" href="#">Contact Support</a>
+</div>
+</footer>
+</body></html>

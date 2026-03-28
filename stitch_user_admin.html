@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Campus Pulse Dashboard | MindSpace</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#004748",
+              "on-error-container": "#6e0a12",
+              "secondary-fixed": "#c7eae1",
+              "on-secondary": "#e3fff7",
+              "inverse-on-surface": "#9b9e99",
+              "surface-container": "#eaefe8",
+              "surface-container-low": "#f1f5ef",
+              "primary-container": "#b0eeed",
+              "on-surface-variant": "#5a615b",
+              "on-primary-fixed-variant": "#256565",
+              "inverse-surface": "#0c0f0c",
+              "surface-tint": "#2a6868",
+              "on-primary-container": "#195b5b",
+              "on-error": "#fff7f6",
+              "secondary-fixed-dim": "#b9dcd3",
+              "error-dim": "#67040d",
+              "outline": "#757d76",
+              "error-container": "#fa746f",
+              "on-secondary-container": "#385851",
+              "error": "#a83836",
+              "surface-variant": "#dde4dc",
+              "secondary": "#46655e",
+              "surface-container-high": "#e4eae2",
+              "primary-fixed": "#b0eeed",
+              "on-tertiary-container": "#644a19",
+              "on-secondary-fixed-variant": "#42615b",
+              "primary-dim": "#1b5c5c",
+              "secondary-dim": "#3a5952",
+              "tertiary-container": "#fed799",
+              "tertiary": "#765a28",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#6f5322",
+              "background": "#f8faf5",
+              "primary-fixed-dim": "#a2dfdf",
+              "outline-variant": "#adb4ac",
+              "on-primary": "#e0fffe",
+              "on-surface": "#2d342f",
+              "surface-container-highest": "#dde4dc",
+              "on-tertiary-fixed": "#4f3707",
+              "tertiary-fixed-dim": "#efc98c",
+              "primary": "#2a6868",
+              "surface-bright": "#f8faf5",
+              "tertiary-dim": "#694f1e",
+              "on-background": "#2d342f",
+              "on-secondary-fixed": "#26453f",
+              "surface-dim": "#d5dcd4",
+              "secondary-container": "#c7eae1",
+              "tertiary-fixed": "#fed799",
+              "on-tertiary": "#fff8f2",
+              "inverse-primary": "#befcfc",
+              "surface": "#f8faf5"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col p-6 space-y-4 bg-[#f1f5ef] dark:bg-[#1a1c18] h-screen w-72 rounded-r-[3rem] shadow-[0_12px_32px_rgba(45,52,47,0.06)] sticky top-0 z-40">
+<div class="px-4 py-6">
+<h1 class="text-xl font-extrabold text-[#4F8B8B] font-headline tracking-tighter">MindSpace</h1>
+<p class="text-xs text-on-surface-variant opacity-60 mt-1 uppercase tracking-widest font-medium">Admin Portal</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-3 px-6 py-4 bg-[#ffffff] dark:bg-[#2d342f] text-[#4F8B8B] dark:text-[#80cbc4] rounded-full shadow-sm font-['Plus_Jakarta_Sans'] text-sm font-medium transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-[#2d342f] dark:text-[#e4eae2] opacity-60 hover:bg-[#e4eae2] dark:hover:bg-[#2d342f] rounded-full font-['Plus_Jakarta_Sans'] text-sm font-medium transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="mood">mood</span>
+<span>Sentiment</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-[#2d342f] dark:text-[#e4eae2] opacity-60 hover:bg-[#e4eae2] dark:hover:bg-[#2d342f] rounded-full font-['Plus_Jakarta_Sans'] text-sm font-medium transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Cohorts</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-[#2d342f] dark:text-[#e4eae2] opacity-60 hover:bg-[#e4eae2] dark:hover:bg-[#2d342f] rounded-full font-['Plus_Jakarta_Sans'] text-sm font-medium transition-transform active:scale-98" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="pt-6 border-t border-outline-variant/10 space-y-4">
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded-full font-bold shadow-lg hover:shadow-xl transition-all active:scale-95 text-sm uppercase tracking-wider">
+                Export Reports
+            </button>
+<a class="flex items-center gap-3 px-6 py-3 text-[#2d342f] dark:text-[#e4eae2] opacity-60 hover:bg-[#e4eae2] dark:hover:bg-[#2d342f] rounded-full font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span>Help Center</span>
+</a>
+</div>
+<div class="flex items-center gap-3 px-4 mt-auto">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a middle-aged female administrator with a warm, confident smile in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6wGy1IgBloLBhudaeJecngIdT3n2Gw5Ym0WP1Mup0yS2h3yaNulKwDdMSjQMqthjX5TugimpWxeIydBqOrkl-dRRiXaRNWhVBKqnsZPhN4iN8ExvNtmy8V-OsTWA-njy6x32rfVEW0OUIuPLppxglCW_fSYT9-hOTCiVM5rZ1uTcTrkYKrIOcDGDIuF8B9JZcrKYv2nhNTdyRv1f1Cbn62NYYRDva7d9bZJHFXtbhTsNDW41dK5NxZMLPdkp73scqcVK2noAEShhw"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Dr. Sarah Chen</p>
+<p class="text-xs text-on-surface-variant">Director of Wellness</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 h-screen overflow-y-auto relative custom-scrollbar">
+<!-- Header Section -->
+<header class="pt-20 px-12 pb-8 flex justify-between items-end">
+<div class="max-w-2xl">
+<h2 class="text-4xl font-headline font-extrabold text-on-surface tracking-tight leading-tight mb-2">Campus Pulse Dashboard</h2>
+<p class="text-lg text-on-surface-variant font-body">Real-time mental wellness insights for the University ecosystem.</p>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-end">
+<span class="text-xs uppercase tracking-widest font-bold text-primary">Last Updated</span>
+<span class="text-sm font-medium text-on-surface">Oct 24, 2024 • 14:30 PM</span>
+</div>
+</div>
+</header>
+<!-- Bento Grid Dashboard -->
+<div class="px-12 pb-20 grid grid-cols-12 gap-6 items-start">
+<!-- Metric Card: Average Mood -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest rounded-xl p-8 shadow-[0_12px_32px_rgba(45,52,47,0.06)] flex flex-col justify-between h-64 border border-outline-variant/5">
+<div>
+<span class="text-sm font-bold uppercase tracking-widest text-on-surface-variant opacity-60">Average Mood Score</span>
+<div class="flex items-baseline gap-2 mt-4">
+<span class="text-7xl font-headline font-extrabold text-primary">7.8</span>
+<span class="text-lg font-bold text-on-surface-variant">/ 10</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-primary-container/30 w-fit px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-sm font-bold text-on-primary-container">+0.4 from last week</span>
+</div>
+</div>
+<!-- Graph: 7-Day Mood Trend -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest rounded-xl p-8 shadow-[0_12px_32px_rgba(45,52,47,0.06)] h-64 border border-outline-variant/5 relative overflow-hidden">
+<div class="flex justify-between items-center mb-6">
+<span class="text-sm font-bold uppercase tracking-widest text-on-surface-variant opacity-60">7-Day Mood Trend</span>
+<div class="flex gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-xs font-medium text-on-surface-variant">Campus Average</span>
+</div>
+</div>
+<!-- Simulated Line Chart with SVG -->
+<div class="w-full h-32 mt-4">
+<svg class="w-full h-full" viewbox="0 0 800 120">
+<path d="M0,80 Q100,20 200,60 T400,40 T600,90 T800,30" fill="none" stroke="url(#gradient-primary)" stroke-linecap="round" stroke-width="4"></path>
+<defs>
+<lineargradient id="gradient-primary" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:var(--tw-color-primary);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:var(--tw-color-secondary);stop-opacity:1"></stop>
+</lineargradient>
+</defs>
+<!-- Data Points -->
+<circle cx="200" cy="60" fill="white" r="4" stroke="#2a6868" stroke-width="2"></circle>
+<circle cx="400" cy="40" fill="white" r="4" stroke="#2a6868" stroke-width="2"></circle>
+<circle cx="800" cy="30" fill="white" r="4" stroke="#2a6868" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="flex justify-between mt-4 px-2">
+<span class="text-xs font-medium text-on-surface-variant/40">Mon</span>
+<span class="text-xs font-medium text-on-surface-variant/40">Tue</span>
+<span class="text-xs font-medium text-on-surface-variant/40">Wed</span>
+<span class="text-xs font-medium text-on-surface-variant/40">Thu</span>
+<span class="text-xs font-medium text-on-surface-variant/40">Fri</span>
+<span class="text-xs font-medium text-on-surface-variant/40">Sat</span>
+<span class="text-xs font-medium text-on-surface-variant/40 text-primary font-bold">Today</span>
+</div>
+</div>
+<!-- Word Cloud: Sentiment Analysis -->
+<div class="col-span-12 md:col-span-5 bg-surface-container-high rounded-xl p-8 shadow-[0_12px_32px_rgba(45,52,47,0.06)] h-[420px] border border-outline-variant/5">
+<span class="text-sm font-bold uppercase tracking-widest text-on-surface-variant opacity-60">Sentiment Word Cloud</span>
+<div class="relative h-full flex flex-wrap gap-4 items-center justify-center content-center p-6">
+<span class="text-4xl font-headline font-extrabold text-primary opacity-90 hover:scale-110 transition-transform cursor-default">Balanced</span>
+<span class="text-2xl font-headline font-semibold text-secondary opacity-70">Motivation</span>
+<span class="text-lg font-headline font-medium text-tertiary opacity-80">Midterms</span>
+<span class="text-5xl font-headline font-black text-primary-dim hover:scale-105 transition-transform cursor-default">Grateful</span>
+<span class="text-xl font-headline font-medium text-on-surface-variant opacity-50">Exhausted</span>
+<span class="text-3xl font-headline font-bold text-secondary-dim opacity-80">Community</span>
+<span class="text-lg font-headline font-medium text-error opacity-60">Anxious</span>
+<span class="text-2xl font-headline font-semibold text-primary opacity-60">Focused</span>
+<span class="text-4xl font-headline font-extrabold text-secondary opacity-90">Connected</span>
+<span class="text-sm font-headline font-medium text-on-surface-variant opacity-40">Weather</span>
+</div>
+</div>
+<!-- Alerts Panel -->
+<div class="col-span-12 md:col-span-7 bg-surface-container-lowest rounded-xl p-8 shadow-[0_12px_32px_rgba(45,52,47,0.06)] h-[420px] border border-outline-variant/5 flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<span class="text-sm font-bold uppercase tracking-widest text-on-surface-variant opacity-60">Active Wellness Alerts</span>
+<span class="px-3 py-1 bg-error-container/20 text-error text-xs font-bold rounded-full">2 High Priority</span>
+</div>
+<div class="space-y-6 overflow-y-auto pr-2">
+<!-- Alert 1 -->
+<div class="flex gap-4 p-5 bg-error-container/5 rounded-lg border-l-4 border-error">
+<div class="w-12 h-12 rounded-full bg-error/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface leading-tight">First-Year STEM Cohort</h4>
+<p class="text-sm text-on-surface-variant mt-1">Mood score dropped 22% in last 48 hours. Primary trigger: "Exam Pressure".</p>
+<button class="mt-3 text-xs font-bold text-error uppercase tracking-widest hover:underline">Launch Outreach</button>
+</div>
+</div>
+<!-- Alert 2 -->
+<div class="flex gap-4 p-5 bg-tertiary-container/10 rounded-lg border-l-4 border-tertiary">
+<div class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary" data-icon="sensors">sensors</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface leading-tight">North Residence Hall</h4>
+<p class="text-sm text-on-surface-variant mt-1">Unusual decrease in check-in volume. Possible engagement decline.</p>
+<button class="mt-3 text-xs font-bold text-tertiary uppercase tracking-widest hover:underline">Check System Health</button>
+</div>
+</div>
+<!-- Alert 3 -->
+<div class="flex gap-4 p-5 bg-secondary-container/10 rounded-lg border-l-4 border-secondary">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface leading-tight">Graduate Arts Cohort</h4>
+<p class="text-sm text-on-surface-variant mt-1">Sentiment recovery detected after workshop intervention. +12% Mood.</p>
+<button class="mt-3 text-xs font-bold text-secondary uppercase tracking-widest hover:underline">View Analytics</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bar Chart: Check-in Volume -->
+<div class="col-span-12 bg-surface-container-low rounded-xl p-8 shadow-[0_12px_32px_rgba(45,52,47,0.06)] border border-outline-variant/5">
+<div class="flex justify-between items-center mb-10">
+<div>
+<span class="text-sm font-bold uppercase tracking-widest text-on-surface-variant opacity-60">Daily Check-in Volume</span>
+<h3 class="text-2xl font-headline font-bold text-on-surface mt-1">12,482 Total Records</h3>
+</div>
+<div class="flex bg-surface-container-lowest rounded-full p-1 border border-outline-variant/10">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary text-xs font-bold shadow-sm">Daily</button>
+<button class="px-6 py-2 rounded-full text-on-surface-variant text-xs font-bold hover:bg-surface-container-high transition-colors">Weekly</button>
+</div>
+</div>
+<div class="flex items-end justify-between h-48 gap-4 px-4">
+<!-- Bars -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg h-[40%] hover:bg-primary/40 transition-colors"></div>
+<span class="text-[10px] font-bold text-on-surface-variant/40">10/18</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg h-[55%] hover:bg-primary/40 transition-colors"></div>
+<span class="text-[10px] font-bold text-on-surface-variant/40">10/19</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg h-[45%] hover:bg-primary/40 transition-colors"></div>
+<span class="text-[10px] font-bold text-on-surface-variant/40">10/20</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg h-[75%] hover:bg-primary/40 transition-colors"></div>
+<span class="text-[10px] font-bold text-on-surface-variant/40">10/21</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg h-[90%] hover:bg-primary/40 transition-colors"></div>
+<span class="text-[10px] font-bold text-on-surface-variant/40">10/22</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg h-[82%] hover:bg-primary/40 transition-colors"></div>
+<span class="text-[10px] font-bold text-on-surface-variant/40">10/23</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary rounded-t-lg h-[100%] shadow-[0_0_20px_rgba(42,104,104,0.3)]"></div>
+<span class="text-[10px] font-bold text-primary">Today</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Component -->
+<footer class="w-full py-12 px-12 bg-[#f1f5ef] dark:bg-[#1a1c18] flex flex-col md:flex-row justify-between items-center gap-4 border-t border-outline-variant/10">
+<p class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-[#2d342f] dark:text-[#e4eae2] opacity-50">© 2024 MindSpace Digital Sanctuary. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-[#2d342f] dark:text-[#e4eae2] opacity-50 hover:opacity-100 hover:text-[#4F8B8B] transition-all" href="#">Privacy Policy</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-[#2d342f] dark:text-[#e4eae2] opacity-50 hover:opacity-100 hover:text-[#4F8B8B] transition-all" href="#">Terms of Service</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-[#2d342f] dark:text-[#e4eae2] opacity-50 hover:opacity-100 hover:text-[#4F8B8B] transition-all" href="#">Contact Support</a>
+</div>
+</footer>
+</main>
+<!-- Floating Quick Actions (FAB) Suppressed on Dashboard as per instructions for Focus Canvas -->
+</body></html>

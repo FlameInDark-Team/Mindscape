@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#f1f5ef",
+              "primary-fixed-dim": "#a2dfdf",
+              "secondary": "#46655e",
+              "on-surface-variant": "#5a615b",
+              "primary-fixed": "#b0eeed",
+              "primary-dim": "#1b5c5c",
+              "on-secondary-container": "#385851",
+              "primary": "#2a6868",
+              "error": "#a83836",
+              "on-surface": "#2d342f",
+              "secondary-fixed-dim": "#b9dcd3",
+              "on-error": "#fff7f6",
+              "surface-container-high": "#e4eae2",
+              "inverse-surface": "#0c0f0c",
+              "tertiary": "#765a28",
+              "surface-container-highest": "#dde4dc",
+              "background": "#f8faf5",
+              "surface-tint": "#2a6868",
+              "on-secondary-fixed-variant": "#42615b",
+              "on-tertiary-fixed-variant": "#6f5322",
+              "on-primary-fixed-variant": "#256565",
+              "inverse-on-surface": "#9b9e99",
+              "secondary-container": "#c7eae1",
+              "surface-dim": "#d5dcd4",
+              "outline-variant": "#adb4ac",
+              "tertiary-fixed-dim": "#efc98c",
+              "surface-variant": "#dde4dc",
+              "on-background": "#2d342f",
+              "on-primary": "#e0fffe",
+              "surface-bright": "#f8faf5",
+              "on-tertiary-container": "#644a19",
+              "secondary-dim": "#3a5952",
+              "error-container": "#fa746f",
+              "primary-container": "#b0eeed",
+              "surface": "#f8faf5",
+              "on-secondary-fixed": "#26453f",
+              "on-primary-container": "#195b5b",
+              "on-secondary": "#e3fff7",
+              "error-dim": "#67040d",
+              "secondary-fixed": "#c7eae1",
+              "inverse-primary": "#befcfc",
+              "on-primary-fixed": "#004748",
+              "on-error-container": "#6e0a12",
+              "on-tertiary-fixed": "#4f3707",
+              "tertiary-container": "#fed799",
+              "outline": "#757d76",
+              "surface-container": "#eaefe8",
+              "tertiary-dim": "#694f1e",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#fed799",
+              "on-tertiary": "#fff8f2"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .word-cloud-item {
+            transition: transform 0.3s ease;
+        }
+        .word-cloud-item:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 h-20 bg-[#f8faf5]/80 dark:bg-slate-900/80 backdrop-blur-xl flex justify-between items-center px-8 w-full max-w-[1920px] mx-auto tonal-transition bg-[#f1f5ef]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold text-[#4F8B8B] tracking-tighter font-headline">Digital Sanctuary Admin</span>
+<div class="hidden md:flex items-center bg-surface-container-highest px-4 py-2 rounded-full gap-3">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-64" placeholder="Search analytics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#f1f5ef] rounded-full transition-all duration-300">
+<span class="material-symbols-outlined text-outline">notifications</span>
+</button>
+<button class="p-2 hover:bg-[#f1f5ef] rounded-full transition-all duration-300">
+<span class="material-symbols-outlined text-outline">help</span>
+</button>
+<button class="p-2 hover:bg-[#f1f5ef] rounded-full transition-all duration-300">
+<span class="material-symbols-outlined text-outline">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden ml-2 bg-surface-container-high">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="Close-up professional portrait of a calm, smiling woman in a bright office with soft natural lighting and plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1FSKB0TV7c8H78Dn1yESJsBuHRQdQTnVUPmPv8sDlM7Bj5DQoECJ8v28NdkU8kpahFcY1lSUrRw_MFdjLRaR_10BvGa6dudAfAKJIk49dkQS1yS54rAojVIOnfNcNEQFnuQDXK1vcAM4FI63Pa6TIMUCjqpLNDXs0liatpLe-BhuY-shqhrWiWtD4fU0y4c7HxqQCwLN9w5fulGLaoOAff7TOF_91jpItB3mS6RdqfZf4G8qG2UiDH--Xgs99_XZZ85UxHhcP4OsH"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-72 z-40 bg-[#f1f5ef] shadow-[12px_0_32px_rgba(45,52,47,0.03)] flex flex-col pt-24 pb-8 space-y-2">
+<div class="px-8 mb-8">
+<h2 class="text-xl font-extrabold text-[#4F8B8B] font-headline">Admin Portal</h2>
+<p class="text-xs text-on-surface-variant font-medium">Student Wellness</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-slate-600 font-medium mx-4 py-3 px-4 flex items-center gap-3 hover:bg-white/50 rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span> Overview
+            </a>
+<a class="bg-white text-[#4F8B8B] shadow-sm rounded-2xl mx-4 py-3 px-4 flex items-center gap-3 font-semibold" href="#">
+<span class="material-symbols-outlined">analytics</span> Student Insights
+            </a>
+<a class="text-slate-600 font-medium mx-4 py-3 px-4 flex items-center gap-3 hover:bg-white/50 rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">auto_stories</span> Resources
+            </a>
+<a class="text-slate-600 font-medium mx-4 py-3 px-4 flex items-center gap-3 hover:bg-white/50 rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">group</span> Staff Directory
+            </a>
+<a class="text-slate-600 font-medium mx-4 py-3 px-4 flex items-center gap-3 hover:bg-white/50 rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">description</span> Reports
+            </a>
+<a class="text-slate-600 font-medium mx-4 py-3 px-4 flex items-center gap-3 hover:bg-white/50 rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">emergency</span> Crisis Alerts
+            </a>
+</nav>
+<div class="px-4 mt-auto space-y-4">
+<button class="w-full py-4 bg-primary text-on-primary rounded-full font-bold shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span> New Report
+            </button>
+<div class="pt-4 space-y-1">
+<a class="text-slate-600 font-medium mx-4 py-2 px-4 flex items-center gap-3 hover:bg-white/50 rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">contact_support</span> Support
+                </a>
+<a class="text-slate-600 font-medium mx-4 py-2 px-4 flex items-center gap-3 hover:bg-white/50 rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">logout</span> Sign Out
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-72 pt-32 pb-20 px-8">
+<div class="max-w-[1200px] mx-auto">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<h1 class="text-5xl font-extrabold font-headline tracking-tight text-on-surface mb-2">Student Sentiment Insights</h1>
+<p class="text-on-surface-variant text-lg max-w-xl">Deep dive into the emotional pulse of our student community through real-time sentiment analysis.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none bg-surface-container-low border-none rounded-full px-6 py-3 pr-10 text-sm font-semibold text-primary focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer">
+<option>Last 30 Days</option>
+<option>Last 7 Days</option>
+<option>All Time</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-primary">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-low border-none rounded-full px-6 py-3 pr-10 text-sm font-semibold text-primary focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer">
+<option>All Cohorts</option>
+<option>Freshmen</option>
+<option>Sophomores</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-primary">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_12px_32px_rgba(45,52,47,0.06)] flex flex-col">
+<span class="text-on-surface-variant text-sm font-semibold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">mood</span> Average Mood Score
+                    </span>
+<div class="flex items-end gap-3">
+<span class="text-4xl font-bold font-headline text-on-surface leading-none">7.4</span>
+<span class="text-sm font-bold text-[#4F8B8B] mb-1 flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span> +0.3
+                        </span>
+</div>
+<p class="text-xs text-on-surface-variant mt-2">vs. previous period</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_12px_32px_rgba(45,52,47,0.06)] flex flex-col">
+<span class="text-on-surface-variant text-sm font-semibold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span> Total Check-ins
+                    </span>
+<span class="text-4xl font-bold font-headline text-on-surface leading-none">12,482</span>
+<p class="text-xs text-on-surface-variant mt-2">Aggregated wellness pulses</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_12px_32px_rgba(45,52,47,0.06)] flex flex-col">
+<span class="text-on-surface-variant text-sm font-semibold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">sentiment_satisfied</span> Positive Sentiment
+                    </span>
+<div class="flex items-end gap-3">
+<span class="text-4xl font-bold font-headline text-on-surface leading-none">68%</span>
+<span class="text-sm font-bold text-[#4F8B8B] mb-1">up 5%</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-2">General satisfaction rating</p>
+</div>
+</div>
+<!-- Bento Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Word Cloud Central Card -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl p-10 shadow-[0_12px_32px_rgba(45,52,47,0.06)] min-h-[500px] flex flex-col">
+<div class="flex items-center justify-between mb-10">
+<h3 class="text-2xl font-bold font-headline text-on-surface">Emotional Vocabulary</h3>
+<span class="text-sm font-medium text-on-surface-variant italic">Live keyword trends</span>
+</div>
+<div class="flex-1 relative flex flex-wrap items-center justify-center content-center gap-x-12 gap-y-8">
+<span class="word-cloud-item text-7xl font-extrabold text-primary font-headline cursor-default">Grateful</span>
+<span class="word-cloud-item text-5xl font-bold text-secondary cursor-default">Exams</span>
+<span class="word-cloud-item text-4xl font-semibold text-tertiary cursor-default">Stress</span>
+<span class="word-cloud-item text-6xl font-bold text-primary-dim cursor-default">Sleep</span>
+<span class="word-cloud-item text-5xl font-medium text-secondary-dim cursor-default">Connected</span>
+<span class="word-cloud-item text-3xl font-bold text-outline cursor-default">Focused</span>
+<span class="word-cloud-item text-4xl font-semibold text-error cursor-default opacity-80">Exhausted</span>
+<span class="word-cloud-item text-6xl font-extrabold text-primary-fixed-dim bg-primary/5 px-6 py-2 rounded-full cursor-default">Community</span>
+</div>
+</div>
+<!-- Right Column Stack -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Summary Panel -->
+<div class="bg-secondary-container rounded-xl p-8 shadow-[0_12px_32px_rgba(45,52,47,0.04)]">
+<h3 class="text-lg font-bold font-headline text-on-secondary-container mb-4">Common themes this week</h3>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary shrink-0">auto_awesome</span>
+<p class="text-sm text-on-secondary-container/90">Mid-term fatigue is peaking; "Exhausted" and "Sleep" are appearing 22% more frequently than last week.</p>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary shrink-0">group_add</span>
+<p class="text-sm text-on-secondary-container/90">Recent campus mixer led to a significant surge in "Connected" and "Community" labels.</p>
+</li>
+</ul>
+</div>
+<!-- Small Mood Chart Placeholder (Mockup representation) -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_12px_32px_rgba(45,52,47,0.06)]">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold font-headline text-on-surface">Mood Trend</h3>
+<span class="text-xs text-on-surface-variant">Last 30 Days</span>
+</div>
+<div class="h-32 w-full relative">
+<!-- SVG Chart Path -->
+<svg class="w-full h-full preserve-3d" viewbox="0 0 400 100">
+<path d="M0 80 Q 50 70, 100 85 T 200 60 T 300 40 T 400 50" fill="none" stroke="#2a6868" stroke-width="3"></path>
+<path d="M0 80 Q 50 70, 100 85 T 200 60 T 300 40 T 400 50 V 100 H 0 Z" fill="url(#grad1)"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:rgba(42,104,104,0.2);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:rgba(42,104,104,0);stop-opacity:1"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-between mt-4">
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest">Week 1</span>
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest">Week 4</span>
+</div>
+</div>
+<!-- Quick Action Card -->
+<div class="bg-surface-container-high rounded-xl p-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-lowest p-3 rounded-full">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface">Draft Announcement</h4>
+<p class="text-xs text-on-surface-variant">Address current exam stress</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Detailed Grid Section -->
+<section class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_12px_32px_rgba(45,52,47,0.06)]">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface">Intervention Insights</h3>
+</div>
+<div class="space-y-6">
+<div class="p-4 bg-background rounded-lg">
+<h4 class="text-sm font-bold mb-1">Recommended Action</h4>
+<p class="text-sm text-on-surface-variant">Host a mindfulness webinar before final examinations begin.</p>
+</div>
+<div class="p-4 bg-background rounded-lg">
+<h4 class="text-sm font-bold mb-1">Impact Prediction</h4>
+<p class="text-sm text-on-surface-variant">Potential 15% reduction in "Stress" keyword frequency.</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_12px_32px_rgba(45,52,47,0.06)] relative overflow-hidden">
+<img alt="Team Collaboration" class="absolute inset-0 w-full h-full object-cover opacity-10" data-alt="Blurred background of students in a bright library with warm wood textures and books, creating a peaceful academic atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9QxvtjrrGkaghsRC-7yYkhpb_yHc3XrVqcEHhGtgg_haebx7gleF0OA00FthL4s836guszEF-4MpCmt4Cu0SRJ94pTT5XluMPPxGs1JlTYQA0FuRUYEgZA0iEaA7d687bdQTJDAhC070V0JtdZkFB2XzbVYFDFY4caVO8TVKI5yaJhCdlF9coui-jYiIcj2x9khsiYPzKy6IWSLtwtGFBk6P79Pv1F8rzuS5ZEe7fnV3SyuvNk49He0wFCLUNZCBD-mBCUuQNQh20"/>
+<div class="relative z-10">
+<h3 class="text-xl font-bold font-headline text-on-surface mb-4">Export Analysis</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Download the comprehensive student sentiment report for the Spring Semester board meeting.</p>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition-all">
+<span class="material-symbols-outlined">download</span> Download PDF
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB (Only for Home/Insight screens) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-tertiary text-on-tertiary rounded-2xl shadow-xl flex items-center justify-center hover:scale-110 transition-all z-50">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</body></html>

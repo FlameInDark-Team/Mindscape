@@ -1,0 +1,67 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+dist/
+build/
+*.log
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+server/mindscape.db
+server/mindscape.db-shm
+server/mindscape.db-wal
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS files
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local development
+.vite/
+.turbo/
+
+# Documentation (optional - remove if you want to include)
+*.docx
+*.pdf
+
+# Screenshots (optional - remove if you want to include)
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Batch files (optional - remove if you want to include)
+*.bat

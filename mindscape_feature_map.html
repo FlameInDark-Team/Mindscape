@@ -1,0 +1,77 @@
+
+<style>
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.feat-card{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px}
+.fc-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.fc-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.fc-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0}
+.feat-item{display:flex;gap:8px;margin-bottom:8px;align-items:flex-start}
+.feat-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.feat-text{font-size:12px;color:var(--color-text-secondary);line-height:1.4}
+.feat-label{font-size:10px;font-weight:500;padding:1px 6px;border-radius:8px;display:inline-block;margin-left:4px;vertical-align:middle}
+.lbl-core{background:#E1F5EE;color:#085041}
+.lbl-anim{background:#DBEAFE;color:#1E40AF}
+.lbl-wow{background:#FAEEDA;color:#633806}
+.ic-student{background:#E1F5EE}
+.ic-admin{background:#EEEDFE}
+.ic-design{background:#FAEEDA}
+.ic-infra{background:#FAECE7}
+.section-h{font-size:12px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.05em;margin:14px 0 8px}
+</style>
+<div style="padding:1rem 0">
+
+<p class="section-h">APP NAME: MINDSCAPE — anonymous mental health check-in platform (React + Express.js)</p>
+
+<div class="feat-grid">
+
+<div class="feat-card">
+  <div class="fc-header">
+    <div class="fc-icon ic-student">🎓</div>
+    <p class="fc-title">Student portal (anonymous)</p>
+  </div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1D9E75"></div><p class="feat-text">10-emoji mood scale (1-10) with Framer Motion bounce + selection glow <span class="feat-label lbl-core">core</span></p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1D9E75"></div><p class="feat-text">Stressor tag selector — Exams, Sleep, Social, Finances, etc.</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1D9E75"></div><p class="feat-text">280-char anonymous text input with character counter</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1D9E75"></div><p class="feat-text">Resource nudge modal on low scores — breathing exercise, counselor, articles</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#BA7517"></div><p class="feat-text">Personal 7-day chart + streak counter (localStorage only, never leaves device) <span class="feat-label lbl-wow">wow factor</span></p></div>
+</div>
+
+<div class="feat-card">
+  <div class="fc-header">
+    <div class="fc-icon ic-admin">📊</div>
+    <p class="fc-title">Admin / counselor dashboard</p>
+  </div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1D9E75"></div><p class="feat-text">Bento grid — dark teal hero card, mood distribution bar, participation donut <span class="feat-label lbl-core">core</span></p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1D9E75"></div><p class="feat-text">Chart.js line/bar charts — 7-day, 30-day, by-department tab switching</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1D9E75"></div><p class="feat-text">Active alerts panel — burnout warnings + engagement drop notifications</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1D9E75"></div><p class="feat-text">Department score list with change indicators (↑/↓)</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#BA7517"></div><p class="feat-text">Animated word cloud from anonymous free-text themes <span class="feat-label lbl-wow">wow factor</span></p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#BA7517"></div><p class="feat-text">AI weekly digest — plain-language summary with email/PDF export <span class="feat-label lbl-wow">wow factor</span></p></div>
+</div>
+
+<div class="feat-card">
+  <div class="fc-header">
+    <div class="fc-icon ic-design">🎨</div>
+    <p class="fc-title">ReactBits-inspired UI design</p>
+  </div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1E40AF"></div><p class="feat-text">Dark theme (#0a0a1a) with teal/emerald accents (#10b981, #6ee7b7) <span class="feat-label lbl-anim">design</span></p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1E40AF"></div><p class="feat-text">Glassmorphism cards — backdrop-filter: blur() with subtle borders</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1E40AF"></div><p class="feat-text">Gradient hero text with animated floating orbs background</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1E40AF"></div><p class="feat-text">Framer Motion: stagger animations, page transitions, emoji bounce</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#1E40AF"></div><p class="feat-text">Interactive 4-7-8 breathing exercise with pulsing circle animation</p></div>
+</div>
+
+<div class="feat-card">
+  <div class="fc-header">
+    <div class="fc-icon ic-infra">⚙️</div>
+    <p class="fc-title">Infrastructure & backend</p>
+  </div>
+  <div class="feat-item"><div class="feat-dot" style="background:#D85A30"></div><p class="feat-text">Express.js REST API — check-in, trends, admin data, alerts endpoints</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#D85A30"></div><p class="feat-text">SQLite (better-sqlite3) — zero-config, fast, WAL mode for concurrency</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#D85A30"></div><p class="feat-text">Trend detection engine — 3-day rolling avg burnout alerts</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#D85A30"></div><p class="feat-text">14-day demo data seeder — realistic distributions across 5 departments</p></div>
+  <div class="feat-item"><div class="feat-dot" style="background:#D85A30"></div><p class="feat-text">Vite dev proxy — seamless frontend-to-backend API routing</p></div>
+</div>
+
+</div>
+</div>

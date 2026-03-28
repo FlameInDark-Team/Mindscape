@@ -1,0 +1,98 @@
+
+<style>
+.arch-wrap{padding:1rem 0}
+.section-label{font-size:12px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.06em;margin:0 0 8px}
+.tier-row{display:grid;gap:8px;margin-bottom:12px}
+.tier-3{grid-template-columns:1fr 1fr 1fr}
+.tier-2{grid-template-columns:1fr 1fr}
+.tier-4{grid-template-columns:1fr 1fr 1fr 1fr}
+.node{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px}
+.node-blue{background:var(--color-background-info);border-color:var(--color-border-info)}
+.node-teal{background:#E1F5EE;border-color:#0F6E56}
+.node-teal .nt{color:#085041}.node-teal .ns{color:#0F6E56}
+.node-purple{background:#EEEDFE;border-color:#534AB7}
+.node-purple .nt{color:#3C3489}.node-purple .ns{color:#534AB7}
+.node-amber{background:#FAEEDA;border-color:#854F0B}
+.node-amber .nt{color:#633806}.node-amber .ns{color:#854F0B}
+.node-coral{background:#FAECE7;border-color:#993C1D}
+.node-coral .nt{color:#4A1B0C}.node-coral .ns{color:#993C1D}
+.nt{font-size:12px;font-weight:500;color:var(--color-text-primary);margin:0 0 2px}
+.ns{font-size:11px;color:var(--color-text-secondary);margin:0}
+.arrow-down{text-align:center;font-size:11px;color:var(--color-text-secondary);padding:2px 0}
+.free-tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:var(--color-background-success);color:var(--color-text-success);margin-left:4px;vertical-align:middle}
+.react-tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:#DBEAFE;color:#1E40AF;margin-left:4px;vertical-align:middle}
+.divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:14px 0}
+</style>
+<div class="arch-wrap">
+
+<p class="section-label">Frontend — React 18 + Vite (ReactBits-inspired UI)</p>
+<div class="tier-row tier-3">
+  <div class="node node-purple">
+    <p class="nt">Student Check-in UI <span class="react-tag">React + Framer Motion</span></p>
+    <p class="ns">Anonymous emoji mood form, stressor tags, text input, resource nudge modal on low scores</p>
+  </div>
+  <div class="node node-purple">
+    <p class="nt">Personal Trends <span class="react-tag">Chart.js</span></p>
+    <p class="ns">7-day mood line chart, streak counter, top stressors — all from localStorage only</p>
+  </div>
+  <div class="node node-purple">
+    <p class="nt">Admin Dashboard <span class="react-tag">Bento Grid</span></p>
+    <p class="ns">Real-time bento layout — campus mood hero, alerts, dept charts, word cloud, AI digest</p>
+  </div>
+</div>
+
+<div class="arrow-down">↓ REST API calls via fetch · Vite proxy to Express backend</div>
+
+<p class="section-label" style="margin-top:10px">Backend — Express.js + SQLite</p>
+<div class="tier-row tier-3">
+  <div class="node node-blue">
+    <p class="nt">Express.js Router</p>
+    <p class="ns">CORS, JSON parsing, check-in submission, admin auth, dashboard data endpoints</p>
+  </div>
+  <div class="node node-blue">
+    <p class="nt">Trend Detection Engine</p>
+    <p class="ns">3-day rolling average check — auto-generates burnout alerts when avg < 4.0</p>
+  </div>
+  <div class="node node-blue">
+    <p class="nt">SQLite + better-sqlite3</p>
+    <p class="ns">mood_entries, alerts, resources, admin_users tables. 14-day demo data seeder.</p>
+  </div>
+</div>
+
+<div class="arrow-down">↓ Node.js backend powering these services</div>
+
+<p class="section-label" style="margin-top:10px">UI Design — ReactBits.dev Inspired</p>
+<div class="tier-row tier-4">
+  <div class="node node-teal">
+    <p class="nt">Glassmorphism <span class="free-tag">CSS</span></p>
+    <p class="ns">backdrop-filter: blur() cards, subtle borders, dark theme with teal accents</p>
+  </div>
+  <div class="node node-teal">
+    <p class="nt">Framer Motion <span class="free-tag">free</span></p>
+    <p class="ns">Page transitions, stagger animations, emoji bounce, breathing circle animation</p>
+  </div>
+  <div class="node node-teal">
+    <p class="nt">Chart.js <span class="free-tag">free</span></p>
+    <p class="ns">Line, bar, doughnut charts for mood trends, dept comparison, distribution</p>
+  </div>
+  <div class="node node-teal">
+    <p class="nt">Google Fonts <span class="free-tag">free</span></p>
+    <p class="ns">Outfit (headings) + Inter (body) — premium typography throughout</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<p class="section-label">Design inspiration</p>
+<div class="tier-row tier-2">
+  <div class="node node-amber">
+    <p class="nt">ReactBits.dev Components <span class="free-tag">open source</span></p>
+    <p class="ns">Animated text, floating orbs, glassmorphism cards, micro-interactions throughout the UI</p>
+  </div>
+  <div class="node node-coral">
+    <p class="nt">Dark theme + Emerald accents</p>
+    <p class="ns">#0a0a1a base, #10b981 accent, gradient hero text, glowing buttons, breathing circle</p>
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface": "#0c0c1d",
+              "on-primary-container": "#002919",
+              "tertiary-container": "#00dcfd",
+              "on-tertiary-container": "#004955",
+              "error-container": "#9f0519",
+              "outline": "#757388",
+              "secondary-fixed": "#bfd1ff",
+              "surface-container-lowest": "#000000",
+              "primary-fixed": "#69f6b8",
+              "surface-container-low": "#121223",
+              "on-secondary-fixed-variant": "#004da8",
+              "primary-dim": "#58e7ab",
+              "tertiary-dim": "#00cdeb",
+              "tertiary-fixed-dim": "#00cdeb",
+              "tertiary": "#77e6ff",
+              "secondary-container": "#005ac2",
+              "on-background": "#e6e3fb",
+              "error": "#ff716c",
+              "on-primary": "#005a3c",
+              "primary-container": "#06b77f",
+              "background": "#0c0c1d",
+              "on-secondary": "#001e4a",
+              "on-primary-fixed-variant": "#006544",
+              "surface-container-high": "#1d1d33",
+              "primary": "#69f6b8",
+              "surface-dim": "#0c0c1d",
+              "primary-fixed-dim": "#58e7ab",
+              "inverse-surface": "#fcf8ff",
+              "on-surface": "#e6e3fb",
+              "surface-container-highest": "#24233b",
+              "secondary-fixed-dim": "#a9c4ff",
+              "on-error": "#490006",
+              "on-tertiary-fixed-variant": "#005360",
+              "secondary": "#699cff",
+              "surface-bright": "#2a2a43",
+              "inverse-primary": "#006d4a",
+              "on-surface-variant": "#aba9bf",
+              "on-primary-fixed": "#00452d",
+              "surface-variant": "#24233b",
+              "on-secondary-fixed": "#003271",
+              "on-tertiary-fixed": "#00343c",
+              "on-tertiary": "#005360",
+              "on-error-container": "#ffa8a3",
+              "surface-tint": "#69f6b8",
+              "error-dim": "#d7383b",
+              "surface-container": "#18182b",
+              "tertiary-fixed": "#00dcfd",
+              "inverse-on-surface": "#545366",
+              "secondary-dim": "#699cff",
+              "outline-variant": "#474659",
+              "on-secondary-container": "#f7f7ff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0c0c1d;
+            color: #e6e3fb;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(36, 35, 59, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(105, 246, 184, 0.15);
+        }
+        .hero-gradient-text {
+            background: linear-gradient(135deg, #69f6b8 0%, #699cff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-button {
+            box-shadow: 0 0 20px rgba(105, 246, 184, 0.3);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(105, 246, 184, 0.5);
+        }
+        .radial-glow {
+            background: radial-gradient(circle at center, rgba(105, 246, 184, 0.08) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary/30">
+<!-- TopNavBar -->
+<header class="sticky top-0 w-full z-50 bg-slate-950/40 backdrop-blur-xl shadow-[0_0_40px_rgba(16,185,129,0.05)]">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="text-2xl font-bold tracking-tighter text-emerald-400 font-headline">
+                Luminescent Sanctuary
+            </div>
+<div class="hidden md:flex items-center space-x-10 font-headline tracking-tight">
+<a class="text-emerald-400 font-bold border-b-2 border-emerald-400 pb-1" href="#">Explore</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors duration-300" href="#">Community</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors duration-300" href="#">Resources</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors duration-300" href="#">About</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold glow-button transition-all duration-300 hover:scale-105 active:scale-95">
+                Start Check-in
+            </button>
+</nav>
+</header>
+<main class="relative">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center pt-12 overflow-hidden">
+<div class="absolute inset-0 radial-glow -z-10"></div>
+<div class="max-w-7xl mx-auto px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center px-4 py-2 rounded-full bg-surface-container-high border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse mr-3"></span>
+<span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">Academic Term 2024</span>
+</div>
+<h1 class="text-6xl md:text-7xl font-extrabold font-headline leading-[1.1] tracking-tight">
+                        Your mental health <br/>
+<span class="hero-gradient-text">deserves attention</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-lg leading-relaxed font-body">
+                        A safe space for college students to reflect, reset, and recharge. Navigate the complexities of campus life with mindfulness and community.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-xl font-bold text-lg glow-button transition-all hover:-translate-y-1">
+                            Start Check-in
+                        </button>
+<button class="bg-surface-variant/40 backdrop-blur-md border border-outline-variant/30 px-10 py-4 rounded-xl font-bold text-lg text-on-surface hover:bg-surface-variant/60 transition-all">
+                            View Resources
+                        </button>
+</div>
+<div class="flex items-center space-x-6 pt-8">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-high">
+<img class="w-full h-full object-cover rounded-full" data-alt="Portrait of a diverse smiling college student in a library setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmBMboxjEHNS42q5s6-nCDABQJpyySVyL6LyCFdsZPpGnASb9HJe4zOVxjWB8EqDnmCXF4JEpfFS1jz_PU6Tl_8DtH_dFvLBOMF9uYbmCACRVbAoywckYNqP89ggRRKA9OofYIYZKsUBf8-D9pMwgRWxdt9HuflgS0SOkiVz4cXkUnZaHPhUuAnt_orOA_iJt_9Q2-mnSa7L0ISkCzcAftX3i155Fi9mUByREgQQCjFmsdoNHbQnUC1GMgQiQn_Zfk7J1uR33Fw6M"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-high">
+<img class="w-full h-full object-cover rounded-full" data-alt="Close-up portrait of a young woman with a calm expression, soft cinematic lighting, outdoor campus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt_-IAkV5bXUZg2nPerUqyc-1gxZbM72zlaesFhaBW5PkVbtoJyVzGMrpDI2k0_98WUEBNS5jyEr06zIKJ92eyfOEgCfmv05ydqm1KOdQHvKzRF963nMND3MvJAfGqNc4OIDa4N4Kn76RZx7EfVBBsE-xIbgf-5jXQQ-sSOJh4pESs50LidWecdoJQ5o8IRWOuaFhjj4Xs-Po_nqPQFpzVl9os3tvSMOMuEE2wC0GE4V_xVM5he6PgcnIF2hXIna-nVUjhiEq22xI"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-high">
+<img class="w-full h-full object-cover rounded-full" data-alt="Close-up portrait of a young man smiling warmly against a blurred urban background at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMjKBk_Hh6Jf6aYtCNXMN8sBPJ1mtcpxz4nUyOjt8v4d7tJrZxp3Oya99B7lUpf1D2b2agQnyKdVHn_3hdz1ZhcHE_A3i05v8UnG1KYcrrHGWF-SvBCFRuJHlEyNc947xA_xkDplgXzUreSJ-e5SlO1Yl4OrZecQ5PI_ur_KJiS2t_4TeRjakUrNrTfF24TnBONWWBmOOArxre6J9E2KR2_Lyaitloi8SVKUoBDhhTtDZ1YnYBzUmfmi1juh5d5629Zg_XT74XiIA"/>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant font-medium">Joined by 12,000+ students this semester</p>
+</div>
+</div>
+<div class="relative flex justify-center items-center">
+<!-- Floating Mind Illustration -->
+<div class="relative w-full aspect-square max-w-xl group">
+<div class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full group-hover:bg-primary/30 transition-all duration-700"></div>
+<img alt="Luminescent mind illustration" class="relative z-10 w-full h-full object-contain drop-shadow-2xl" data-alt="A stylized 3D human brain composed of translucent glass layers with glowing emerald green and sapphire blue neural pathways pulsing inside a dark void" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaU_e_WWkE3HOi4zr6gQ3h9VWsjWrsvSk0F9xDkcase0_CxHZWkqZYU7RKJ7hbQLR1QQTqPKwyQQtbOBVcgZjgrKg9GTzCKlj-3KXj7BzFiMrMSCNwGUO9wg1h4dUjlgTHcDiIrlVR05csFKnvJgC32Lnm5Avjlm_5JLalah8mwN_GTRlvPhM8d4G5-cGq542SbCHLa3Rv7MEC0NzD3IrAhi9jR2OswOXMtoWiGzWyMethKfhMVvkQOq30WqlSWKC7zhRprpKT5jA"/>
+<!-- Floating UI Elements for Depth -->
+<div class="absolute top-10 right-0 glass-card p-4 rounded-2xl shadow-2xl transform rotate-6 hover:rotate-0 transition-transform duration-500">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider">Mindful State: Active</span>
+</div>
+</div>
+<div class="absolute bottom-20 -left-8 glass-card p-4 rounded-2xl shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="favorite">favorite</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider">Heart Rate: Calm</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Cards Section -->
+<section class="py-24 max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="glass-card p-8 rounded-[2rem] hover:bg-surface-container-highest/60 transition-all duration-500 group">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 border border-primary/20 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="edit_note">edit_note</span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-4">Daily Reflection</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">
+                        Take five minutes to journal your thoughts and feelings. Track your emotional growth over the semester with intuitive visual charts.
+                    </p>
+<a class="inline-flex items-center text-primary font-bold tracking-tight hover:underline" href="#">
+                        Start journaling
+                        <span class="material-symbols-outlined ml-2 text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-8 rounded-[2rem] hover:bg-surface-container-highest/60 transition-all duration-500 group border-secondary/15">
+<div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-8 border border-secondary/20 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="self_improvement">self_improvement</span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-4">Guided Mindfulness</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">
+                        Bespoke meditation sessions designed specifically for pre-exam anxiety, social stress, and deep focus late-night study blocks.
+                    </p>
+<a class="inline-flex items-center text-secondary font-bold tracking-tight hover:underline" href="#">
+                        Explore sessions
+                        <span class="material-symbols-outlined ml-2 text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-8 rounded-[2rem] hover:bg-surface-container-highest/60 transition-all duration-500 group border-tertiary/15">
+<div class="w-14 h-14 rounded-2xl bg-tertiary/10 flex items-center justify-center mb-8 border border-tertiary/20 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="groups">groups</span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-4">Community Support</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">
+                        Connect with peers who understand the unique challenges of university life. Join moderated peer-led support groups in a safe environment.
+                    </p>
+<a class="inline-flex items-center text-tertiary font-bold tracking-tight hover:underline" href="#">
+                        Find your group
+                        <span class="material-symbols-outlined ml-2 text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Asymmetric Detail Section -->
+<section class="py-32 bg-surface-container-low relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<div class="lg:col-span-7 rounded-3xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60 z-10"></div>
+<img class="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-1000" data-alt="Modern university common area with floor-to-ceiling windows, soft warm interior lighting, and lush indoor plants, creating a serene atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzQd6mJubQPqkTgMwxUm7DLDLAeTdLhojFD-Sdhs131mjL1DcgewlnD-DVXOxhtM6s4QNpSTt3_xvieGdv9aTEAgr0hDDYgJrPGiN4QYQWP__d_pMTDjdi1JnkHL_ncKh5JJw5WYUMada3Be0OqXLMlo6oeVfNlsD5Y4Q7NU_9G-4wl1Oi3Yh333tLOeWwr9XwHTaam6F5yL42lqOoxGO0GA11Z2LR_eMjKHlyNt1v5rBOK-oFlve89gtuhGbK3p6eF16RoAy61JY"/>
+<div class="absolute bottom-8 left-8 z-20">
+<div class="glass-card p-6 rounded-2xl border-white/5">
+<p class="text-lg font-bold font-headline">Designed by Students, <br/> For Students.</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 space-y-6">
+<h2 class="text-4xl font-extrabold font-headline leading-tight">Evidence-based <br/>approaches to wellness</h2>
+<p class="text-on-surface-variant leading-relaxed">
+                        We leverage cognitive behavioral techniques and positive psychology to create a platform that doesn't just feel good, but actually works for your brain's unique needs during these formative years.
+                    </p>
+<ul class="space-y-4 pt-4">
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-primary mt-0.5" data-icon="check_circle">check_circle</span>
+<span>Privacy-first, encrypted data storage</span>
+</li>
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-primary mt-0.5" data-icon="check_circle">check_circle</span>
+<span>24/7 Crisis line accessibility</span>
+</li>
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-primary mt-0.5" data-icon="check_circle">check_circle</span>
+<span>Integrated campus health resources</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 max-w-7xl mx-auto px-8">
+<div class="relative bg-surface-container-high rounded-[3rem] p-12 md:p-20 overflow-hidden text-center border border-outline-variant/10">
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[80px] rounded-full"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 blur-[80px] rounded-full"></div>
+<h2 class="text-4xl md:text-5xl font-extrabold font-headline mb-8 relative z-10">Start your journey today</h2>
+<p class="text-xl text-on-surface-variant mb-12 max-w-2xl mx-auto relative z-10 leading-relaxed">
+                    Join thousands of other students who have prioritized their mental health. It only takes 60 seconds to complete your first check-in.
+                </p>
+<div class="flex justify-center relative z-10">
+<button class="bg-primary text-on-primary px-12 py-5 rounded-2xl font-black text-xl glow-button hover:scale-105 transition-transform active:scale-95">
+                        Start Check-in Now
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0c0c1d] w-full py-16 px-8 border-t border-slate-800/50">
+<div class="flex flex-col md:flex-row justify-between items-start max-w-7xl mx-auto space-y-12 md:space-y-0">
+<div class="max-w-xs">
+<div class="text-lg font-black text-emerald-500 mb-4 font-headline uppercase tracking-tighter">Luminescent Sanctuary</div>
+<p class="text-slate-500 text-sm leading-relaxed font-body">
+                    Empowering students with the tools they need to navigate university life with mental clarity and resilience.
+                </p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-12">
+<div class="flex flex-col space-y-4">
+<span class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Resources</span>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors text-sm" href="#">Crisis Line</a>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors text-sm" href="#">Self-Help Kit</a>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors text-sm" href="#">Find a Therapist</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Company</span>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors text-sm" href="#">About Us</a>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors text-sm" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Support</span>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors text-sm" href="#">Support Center</a>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors text-sm" href="#">Contact Us</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Connect</span>
+<div class="flex space-x-4">
+<a class="text-slate-500 hover:text-emerald-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="alternate_email">alternate_email</span>
+</a>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="share">share</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-800/30 flex justify-between items-center text-xs text-slate-500 font-label">
+<p>© 2024 Luminescent Sanctuary. Dedicated to student wellness.</p>
+<div class="flex space-x-6">
+<a class="hover:text-emerald-400" href="#">Cookie Policy</a>
+<a class="hover:text-emerald-400" href="#">Security</a>
+</div>
+</div>
+</footer>
+</body></html>
