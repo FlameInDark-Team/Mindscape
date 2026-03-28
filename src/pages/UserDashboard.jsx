@@ -55,7 +55,7 @@ export default function UserDashboard() {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:3001/api/chat', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export default function UserDashboard() {
         },
         body: JSON.stringify({
           message: inputMessage,
-          history: messages.slice(-10) // Send last 10 messages for context
+          history: messages.slice(-10)
         })
       })
 
@@ -267,8 +267,20 @@ export default function UserDashboard() {
                     <button
                       key={i}
                       onClick={() => {
-                        setInputMessage(prompt.text)
-                        setTimeout(() => sendMessage(), 100)
+                        const msg = prompt.text
+                        setInputMessage('')
+                        const userMessage = { role: 'user', content: msg, timestamp: new Date() }
+                        setMessages(prev => [...prev, userMessage])
+                        setLoading(true)
+                        fetch('/api/chat', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('mindscape_user_token')}` },
+                          body: JSON.stringify({ message: msg, history: messages.slice(-10) })
+                        }).then(r => r.json()).then(data => {
+                          setMessages(prev => [...prev, { role: 'assistant', content: data.response || 'Sorry, I encountered an error.', timestamp: new Date() }])
+                        }).catch(() => {
+                          setMessages(prev => [...prev, { role: 'assistant', content: 'Connection error. Please try again.', timestamp: new Date() }])
+                        }).finally(() => setLoading(false))
                       }}
                       className="chip"
                       style={{ cursor: 'pointer' }}
@@ -287,7 +299,7 @@ export default function UserDashboard() {
                   type="text"
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                  onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                   placeholder="Type your message..."
                   disabled={loading}
                   style={{ flex: 1 }}

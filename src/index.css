@@ -1715,3 +1715,47 @@ select:focus-visible {
     gap: var(--space-sm) !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════════
+   Admin Login — Split-Screen Responsive
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .admin-login-grid {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+
+  .admin-login-grid > div:first-child {
+    padding: var(--space-xl) !important;
+    min-height: 280px;
+  }
+
+  .admin-login-grid > div:first-child h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .admin-login-grid > div:first-child > div > div:last-child {
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--space-sm) !important;
+  }
+
+  .admin-login-grid > div:last-child {
+    padding: var(--space-xl) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-login-grid > div:first-child {
+    padding: var(--space-lg) !important;
+    min-height: 220px;
+  }
+
+  .admin-login-grid > div:first-child > div > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-login-grid > div:last-child {
+    padding: var(--space-lg) !important;
+  }
+}

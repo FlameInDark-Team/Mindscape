@@ -311,7 +311,7 @@ app.post('/api/organization/register', (req, res) => {
     `)
     const result = stmt.run(name, email, passwordHash, description || '')
 
-    const token = generateToken()
+    const token = 'msa-' + Date.now() + '-' + crypto.randomBytes(16).toString('hex')
 
     res.json({
       success: true,
@@ -347,7 +347,7 @@ app.post('/api/organization/login', (req, res) => {
     // Update last login
     db.prepare('UPDATE organizations SET last_login = datetime("now") WHERE id = ?').run(org.id)
 
-    const token = generateToken()
+    const token = 'msa-' + Date.now() + '-' + crypto.randomBytes(16).toString('hex')
 
     res.json({
       success: true,
@@ -703,10 +703,10 @@ app.post('/api/admin/login', (req, res) => {
   }
 })
 
-// Simple auth middleware
+// Simple auth middleware — accepts admin (ms-, msa-) and user (msu-) tokens
 function requireAuth(req, res, next) {
   const token = req.headers.authorization?.replace('Bearer ', '')
-  if (!token || (!token.startsWith('ms-') && !token.startsWith('msa-'))) {
+  if (!token || (!token.startsWith('ms-') && !token.startsWith('msa-') && !token.startsWith('msu-'))) {
     return res.status(401).json({ error: 'Unauthorized' })
   }
   next()

@@ -11,6 +11,9 @@ const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
 
 const API_BASE = '/api'
 
+// Get org admin name from session
+const getOrgName = () => sessionStorage.getItem('mindscape_admin_name') || 'Admin'
+
 export default function AdminDashboard() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)

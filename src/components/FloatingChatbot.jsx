@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { API_URL } from '../config'
+
 
 export default function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,10 +39,7 @@ export default function FloatingChatbot() {
     setLoading(true)
 
     try {
-      const apiUrl = API_URL || 'https://mindscape-b5oe.onrender.com'
-      console.log('Sending message to:', `${apiUrl}/api/chat/anonymous`)
-      
-      const res = await fetch(`${apiUrl}/api/chat/anonymous`, {
+      const res = await fetch('/api/chat/anonymous', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -53,9 +50,7 @@ export default function FloatingChatbot() {
         })
       })
 
-      console.log('Response status:', res.status)
       const data = await res.json()
-      console.log('Response data:', data)
 
       if (res.ok && data.response) {
         setMessages(prev => [...prev, {
@@ -319,7 +314,7 @@ export default function FloatingChatbot() {
                     type="text"
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                    onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                     placeholder="Type your message..."
                     disabled={loading}
                     style={{ 

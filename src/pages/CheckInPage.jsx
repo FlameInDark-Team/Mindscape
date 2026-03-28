@@ -11,7 +11,7 @@ const personalityQuestions = [
     question: 'When you feel stressed, do you prefer to:',
     options: [
       { text: 'Spend time completely alone to recharge and reflect', value: 'I', emoji: '🧘', trait: 'Strong Introversion', weight: 2 },
-      { text: 'Have quiet time with one close friend or family member', value: 'I', emoji: '�', trait: 'Mild Introversion', weight: 1 },
+      { text: 'Have quiet time with one close friend or family member', value: 'I', emoji: '👤', trait: 'Mild Introversion', weight: 1 },
       { text: 'Be around a small group of friends to talk it out', value: 'E', emoji: '👥', trait: 'Mild Extraversion', weight: 1 },
       { text: 'Surround yourself with many people and social activities', value: 'E', emoji: '🎉', trait: 'Strong Extraversion', weight: 2 }
     ]
@@ -47,8 +47,8 @@ const personalityQuestions = [
     question: 'When facing a problem, you tend to:',
     options: [
       { text: 'Focus only on immediate, practical solutions', value: 'S', emoji: '🔧', trait: 'Strong Sensing', weight: 2 },
-      { text: 'Use proven methods with slight adjustments', value: 'S', emoji: '�', trait: 'Mild Sensing', weight: 1 },
-      { text: 'Consider future implications and possibilities', value: 'N', emoji: '�', trait: 'Mild Intuition', weight: 1 },
+      { text: 'Use proven methods with slight adjustments', value: 'S', emoji: '📋', trait: 'Mild Sensing', weight: 1 },
+      { text: 'Consider future implications and possibilities', value: 'N', emoji: '🔮', trait: 'Mild Intuition', weight: 1 },
       { text: 'Explore innovative and unconventional approaches', value: 'N', emoji: '💡', trait: 'Strong Intuition', weight: 2 }
     ]
   },
@@ -59,9 +59,9 @@ const personalityQuestions = [
     question: 'You learn best by:',
     options: [
       { text: 'Following detailed step-by-step instructions', value: 'S', emoji: '📝', trait: 'Strong Sensing', weight: 2 },
-      { text: 'Using practical examples and demonstrations', value: 'S', emoji: '�‍🏫', trait: 'Mild Sensing', weight: 1 },
+      { text: 'Using practical examples and demonstrations', value: 'S', emoji: '👩‍🏫', trait: 'Mild Sensing', weight: 1 },
       { text: 'Understanding the overall concept first', value: 'N', emoji: '🎨', trait: 'Mild Intuition', weight: 1 },
-      { text: 'Exploring theories and abstract ideas', value: 'N', emoji: '�', trait: 'Strong Intuition', weight: 2 }
+      { text: 'Exploring theories and abstract ideas', value: 'N', emoji: '🌐', trait: 'Strong Intuition', weight: 2 }
     ]
   },
   {
@@ -130,7 +130,7 @@ const personalityQuestions = [
     dimension: 'Judging vs Perceiving',
     question: 'You feel more comfortable when your day is:',
     options: [
-      { text: 'Completely planned with a detailed schedule', value: 'J', emoji: '�', trait: 'Strong Judging', weight: 2 },
+      { text: 'Completely planned with a detailed schedule', value: 'J', emoji: '📅', trait: 'Strong Judging', weight: 2 },
       { text: 'Generally organized with some structure', value: 'J', emoji: '📋', trait: 'Mild Judging', weight: 1 },
       { text: 'Flexible with loose plans', value: 'P', emoji: '🎲', trait: 'Mild Perceiving', weight: 1 },
       { text: 'Completely spontaneous and unplanned', value: 'P', emoji: '🌊', trait: 'Strong Perceiving', weight: 2 }
